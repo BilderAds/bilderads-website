@@ -81,7 +81,7 @@ export function FAQ() {
           transition={{ duration: 0.55, ease: "easeOut" }}
           className="mt-12 md:mt-14"
         >
-          <Accordion type="single" collapsible className="flex flex-col gap-2.5">
+          <Accordion className="flex flex-col gap-2.5">
             {FAQS.map((item, i) => (
               <AccordionItem
                 key={item.q}
