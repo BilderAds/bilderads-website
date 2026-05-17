@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section } from "@/components/ui/section";
+import { BrandButton } from "@/components/ui/brand-button";
 import {
   Accordion,
   AccordionContent,
@@ -16,91 +16,95 @@ type FaqItem = {
 
 const FAQS: FaqItem[] = [
   {
-    q: "Für wen passt BilderAds, und für wen nicht?",
-    a: "Wir arbeiten mit lokalen Dienstleistern: Gebäudereinigung, Schlüsseldienst, Sanitär, Entrümpelung, Glaserei, Elektriker, Ungezieferbekämpfung. Wenn du E-Commerce, Coaching oder Software verkaufst, sind wir nicht der Richtige.",
+    q: "Funktioniert das auch für mein Business?",
+    a: "Wenn du lokaler Dienstleister bist (Maler, Elektriker, Sanitär, Reinigung, Glaser, Entrümpelung, Schlüsseldienst, Dachdecker) – ja. Wir testen das im Erstgespräch in 5 Minuten.",
   },
   {
-    q: "Wie schnell kommen die ersten Anfragen?",
-    a: "Erste Anfragen meistens in der zweiten Woche. Nach 4 bis 6 Wochen wissen wir genau welche Anzeigen am besten funktionieren. Dann skaliert's.",
+    q: "Für wen ist BilderAds geeignet?",
+    a: "Inhaber lokaler Dienstleister, die mehr zahlende Kunden wollen, ohne selber Werbung machen zu müssen. Du musst die Aufträge nur abarbeiten können.",
   },
   {
-    q: "Was passiert wenn keine Anfragen kommen?",
-    a: "Garantie: Nach 3 Monaten ohne Anfragen arbeiten wir gratis weiter bis sie kommen. Wir haben das bisher nie gebraucht.",
+    q: "Macht ihr nur Creatives oder auch Strategie?",
+    a: "Beides. Werbeanzeigen, Website, Google Business Profil, Zielgruppen, Budget, Reporting. Komplettes Performance-Setup, nicht nur hübsche Bilder.",
   },
   {
-    q: "Brauche ich eine eigene Website?",
-    a: "Nein. Wir bauen dir eine neue, schnelle Landing Page für deine Stadt und Branche. Die ist im Preis enthalten.",
+    q: "Schaltet ihr auch die Ads (Media Buying)?",
+    a: "Ja. Google Ads, optional Facebook und Instagram (Black Diamond). Du musst nichts selber klicken.",
   },
   {
-    q: "Wie viel Werbebudget brauche ich zusätzlich?",
-    a: "Empfehlung: 500 bis 2.000 € pro Monat Google Ads Budget am Anfang. Skaliert mit deinen Anfragen. Du zahlst direkt an Google, nicht an uns.",
+    q: "Wie läuft die Zusammenarbeit ab?",
+    a: "1. Erstgespräch · 2. Onboarding-Call (60 Min) · 3. Wir bauen Ads + Website · 4. Anzeigen gehen live · 5. Wöchentlicher Performance-Bericht. Du musst nur dabei sein.",
   },
   {
-    q: "Was unterscheidet euch von anderen Agenturen?",
-    a: "Wir spezialisieren uns nur auf lokale Dienstleister. Keine E-Com, kein B2B-SaaS, kein Coaching. Daher kennen wir jede Branche, jede Stadt, jede Saison.",
+    q: "Muss ich einen Call machen?",
+    a: "Ja, einen kurzen. 30 Minuten. Wir gucken ob wir zusammen passen. Kein Verkaufsdruck, keine Folie.",
   },
   {
-    q: "Wer ist mein Ansprechpartner?",
-    a: "Kevin. Direkt. WhatsApp und Telefon. Kein Account-Manager, kein Ticket-System.",
+    q: "Was kostet BilderAds?",
+    a: "Gold 3.000 € / Monat, Black Diamond 5.000 € / Monat. Dazu dein Google-Ads-Budget (zahlst direkt an Google). Mindestlaufzeit 3 Monate, danach monatlich kündbar.",
   },
   {
-    q: "Wie lange ist die Mindestlaufzeit?",
-    a: "3 Monate Mindestlaufzeit. Danach monatlich kündbar. Wir wollen Ergebnisse zeigen, nicht binden.",
+    q: "Arbeitet ihr mit jedem?",
+    a: "Nein. Aktuell nehmen wir nur lokale Dienstleister, und auch nur wenn wir glauben, dass wir Ergebnisse liefern können. Nicht jede Branche, nicht jede Stadt.",
   },
   {
-    q: "Was kostet's wirklich am Ende?",
-    a: "3.000 € pro Monat an uns, plus dein eigenes Google Ads Budget (500 bis 2.000 € pro Monat). Onboarding 1.500 € einmalig. Alles transparent, keine versteckten Kosten.",
-  },
-  {
-    q: "Was muss ich tun?",
-    a: "Step 1: 30 Min Call. Step 2: 1 Onboarding-Call (1 Std). Danach 15 Min pro Monat für Reporting. Mehr brauchst du nicht.",
+    q: "Was ist der Sinn des Lebens?",
+    a: "Mehr zahlende Kunden für dein Business. Probier's mit dem Button unten.",
   },
 ];
 
-/**
- * FAQ section. shadcn Accordion with 10 items. Single column, max-w-3xl.
- */
 export function FAQ() {
   return (
-    <Section id="faq" className="bg-[#0a0a0a]">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mx-auto max-w-3xl text-center"
-      >
-        <h2 className="text-3xl leading-[1.05] font-semibold tracking-tight text-white md:text-5xl">
-          Die meistgestellten Fragen.
-        </h2>
-      </motion.div>
+    <section
+      id="faq"
+      className="relative w-full bg-black py-15 tablet:py-20 desktop:py-30"
+    >
+      <div className="mx-auto w-full max-w-3xl px-5 tablet:px-10 desktop:px-20">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="text-center"
+        >
+          <h2 className="text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]">
+            Fragen und Antworten
+            <br />
+            <span className="text-white/70">rund um unsere BilderAds</span>
+          </h2>
+        </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.55, ease: "easeOut" }}
-        className="mx-auto mt-14 w-full max-w-3xl md:mt-16"
-      >
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
-          <Accordion>
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="mt-12 md:mt-14"
+        >
+          <Accordion type="single" collapsible className="flex flex-col gap-2.5">
             {FAQS.map((item, i) => (
               <AccordionItem
                 key={item.q}
                 value={`item-${i}`}
-                className="border-white/10 px-6 md:px-7"
+                className="rounded-[12px] border border-white/10 bg-white/[0.02] px-5 data-[state=open]:bg-white/[0.04]"
               >
-                <AccordionTrigger className="py-5 text-left text-[16px] font-semibold tracking-tight text-white hover:no-underline md:py-6 md:text-[18px] [&>svg]:!size-5 [&>svg]:!text-[#a78bfa]">
+                <AccordionTrigger className="py-4 text-left text-[14px] font-semibold tracking-tight text-white hover:no-underline md:text-[15px] [&>svg]:!size-4 [&>svg]:!text-white/55">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-[15px] leading-relaxed text-[#a1a1aa] md:text-base">
+                <AccordionContent className="text-[13.5px] leading-relaxed text-white/65 md:text-[14px]">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+        </motion.div>
+
+        <div className="mt-10 flex justify-center">
+          <BrandButton href="#analyse" size="md">
+            Jetzt mehr Kunden bekommen
+          </BrandButton>
         </div>
-      </motion.div>
-    </Section>
+      </div>
+    </section>
   );
 }

@@ -22,14 +22,14 @@ export function Section({
     <Tag
       className={cn(
         "relative w-full",
-        pad === "hero" && "py-24 md:py-32",
-        pad === "default" && "py-24 md:py-28",
-        pad === "tight" && "py-16 md:py-20",
+        pad === "hero" && "py-20 tablet:py-25 desktop:py-40",
+        pad === "default" && "py-15 tablet:py-20 desktop:py-30",
+        pad === "tight" && "py-10 tablet:py-14 desktop:py-20",
         className,
       )}
       {...props}
     >
-      <div className="mx-auto w-full max-w-7xl px-6 md:px-10">{children}</div>
+      <div className="mx-auto w-full max-w-[1440px] px-5 tablet:px-10 desktop:px-20">{children}</div>
     </Tag>
   );
 }

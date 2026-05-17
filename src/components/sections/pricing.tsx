@@ -1,134 +1,284 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Check, TriangleAlert } from "lucide-react";
-import { Section } from "@/components/ui/section";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { BrandButton } from "@/components/ui/brand-button";
+import { cn } from "@/lib/utils";
 
-const FEATURES: string[] = [
-  "Google Ads Management (Setup und laufende Optimierung)",
-  "Landing Page für deine Stadt und Niche",
-  "4-6 Anzeigen-Kreative pro Monat",
-  "Tracking und Reporting",
-  "Direkter Kontakt zu Kevin (WhatsApp und Call)",
+type Feature = {
+  name: string;
+  subItems: string[];
+};
+
+type Tier = {
+  name: "Gold" | "Black Diamond";
+  scarcity?: string;
+  pitch: string;
+  price: string;
+  unit: string;
+  features: Feature[];
+  ctaVariant: "primary" | "outline";
+  highlight: boolean;
+};
+
+const TIERS: Tier[] = [
+  {
+    name: "Gold",
+    scarcity: "Nur noch 3 Plätze frei",
+    pitch: "Jeden Monat mehr Kunden bekommen, ohne einen Finger zu rühren.",
+    price: "3.000 €",
+    unit: "/ Monat",
+    ctaVariant: "primary",
+    highlight: true,
+    features: [
+      {
+        name: "Google Werbung",
+        subItems: [
+          "Google Search Ads",
+          "40 Image Ads für Google",
+        ],
+      },
+      {
+        name: "Website",
+        subItems: [
+          "Design & Tests",
+          "Kontaktformular & Anfragen Optimierung",
+          "Mobile optimiert",
+        ],
+      },
+      {
+        name: "Google Business Profil Optimierung",
+        subItems: [
+          "Vollständige Profil-Optimierung",
+          "Bewertungs-Management",
+          "Lokale Suche im Umkreis",
+        ],
+      },
+      {
+        name: "Wöchentlicher Performance Bericht",
+        subItems: ["Anfragen & Kosten im Überblick"],
+      },
+      {
+        name: "Wöchentliche Update Meetings",
+        subItems: ["30 Minuten Online-Besprechung"],
+      },
+    ],
+  },
+  {
+    name: "Black Diamond",
+    pitch: "Für Dienstleister die mehr Kunden wollen, ohne Risiko einzugehen.",
+    price: "5.000 €",
+    unit: "/ Monat",
+    ctaVariant: "outline",
+    highlight: false,
+    features: [
+      {
+        name: "Google Werbung",
+        subItems: ["Google Search Ads", "20 Image Ads für Google"],
+      },
+      {
+        name: "Website",
+        subItems: [
+          "Design & Tests",
+          "Kontaktformular & Anfragen Optimierung",
+          "Mobile optimiert",
+        ],
+      },
+      {
+        name: "Facebook + Instagram Werbung",
+        subItems: [
+          "Setup der Meta-Werbung",
+          "Erstellung der Werbeanzeigen",
+          "Media-Buying der Werbeanzeigen",
+          "Optimierung der Werbeanzeigen",
+        ],
+      },
+      {
+        name: "Google Business Profil Optimierung",
+        subItems: [
+          "Vollständige Profil-Optimierung",
+          "Bewertungs-Management",
+          "Lokale Suche im Umkreis",
+        ],
+      },
+      {
+        name: "Wöchentlicher Performance Bericht",
+        subItems: ["Anfragen & Kosten im Überblick"],
+      },
+    ],
+  },
 ];
 
-/**
- * Pricing section. Single centered tier card. 3.000 €/Monat + 1.500 € Onboarding,
- * feature checklist, guarantee box, scarcity line, primary CTA.
- */
 export function Pricing() {
   return (
-    <Section id="preise" className="overflow-hidden bg-[#0a0a0a]">
-      {/* Soft purple glow behind card */}
+    <section
+      id="preise"
+      className="relative w-full overflow-hidden bg-black py-15 tablet:py-20 desktop:py-30"
+    >
       <div
         aria-hidden
-        className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7c3aed]/15 blur-[160px]"
+        className="pointer-events-none absolute top-1/3 left-1/2 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-[#3a0460]/30 blur-[150px]"
       />
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mx-auto max-w-3xl text-center"
-      >
-        <h2 className="text-3xl leading-[1.05] font-semibold tracking-tight text-white md:text-5xl">
-          Was kostet das?
-        </h2>
-        <p className="mt-5 text-base text-[#a1a1aa] md:text-lg">
-          Ein Preis. Alles drin. Keine Überraschungen.
-        </p>
-      </motion.div>
+      <div className="relative mx-auto w-full max-w-5xl px-5 tablet:px-10 desktop:px-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="text-center text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]"
+        >
+          2 Wege, 1 Ziel
+          <br />
+          <span className="text-white/70">Mehr Kunden für dich</span>
+        </motion.h2>
 
-      {/* Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative mx-auto mt-16 w-full max-w-2xl md:mt-20"
-      >
-        {/* Glow halo */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -inset-6 -z-10 rounded-[32px] bg-gradient-to-br from-[#7c3aed]/30 via-[#6d28d9]/20 to-[#4c1d95]/30 opacity-60 blur-2xl"
-        />
-
-        <div className="relative rounded-2xl border border-[#7c3aed]/30 bg-white/[0.04] p-8 transition-all duration-300 hover:border-[#7c3aed]/60 md:p-12">
-          {/* Tier label */}
-          <div className="inline-flex items-center rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 px-3.5 py-1.5 text-xs font-medium tracking-wider text-[#c4b5fd] uppercase">
-            BilderAds Standard
-          </div>
-
-          {/* Price */}
-          <div className="mt-8 flex flex-wrap items-end gap-x-3 gap-y-1">
-            <span className="text-[56px] leading-none font-semibold tracking-tight text-white md:text-[64px]">
-              3.000 €
-            </span>
-            <span className="pb-2 text-lg text-[#a1a1aa] md:text-xl">
-              / Monat
-            </span>
-          </div>
-          <div className="mt-3 text-sm text-[#a1a1aa] md:text-base">
-            + einmalig 1.500 € Onboarding
-          </div>
-
-          <div className="mt-8 h-px w-full bg-white/10" />
-
-          {/* Features */}
-          <div className="mt-8">
-            <div className="text-xs font-medium tracking-wider text-[#71717a] uppercase">
-              Enthalten
-            </div>
-            <ul className="mt-5 space-y-3.5">
-              {FEATURES.map((feature) => (
-                <li
-                  key={feature}
-                  className="flex items-start gap-3 text-[15px] leading-snug text-white md:text-base"
-                >
-                  <Check
-                    className="mt-0.5 h-5 w-5 shrink-0 text-[#a78bfa]"
-                    strokeWidth={2.5}
-                  />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Garantie */}
-          <div className="mt-8 rounded-xl border border-green-500/20 bg-green-500/5 p-5">
-            <div className="text-xs font-medium tracking-wider text-green-400 uppercase">
-              Garantie
-            </div>
-            <p className="mt-2 text-[15px] leading-snug font-medium text-white md:text-base">
-              Nach 3 Monaten keine Anfragen?
-            </p>
-            <p className="mt-1 text-[15px] leading-snug text-[#a1a1aa] md:text-base">
-              Wir arbeiten gratis weiter bis sie kommen.
-            </p>
-          </div>
-
-          {/* Scarcity */}
-          <div className="mt-5 flex items-center gap-2.5 rounded-xl border border-amber-500/30 bg-amber-500/5 px-4 py-3">
-            <TriangleAlert
-              className="h-4 w-4 shrink-0 text-amber-400"
-              strokeWidth={2.5}
-            />
-            <span className="text-sm font-medium text-amber-200 md:text-[15px]">
-              Nur noch 3 Plätze frei diesen Monat.
-            </span>
-          </div>
-
-          {/* CTA */}
-          <a
-            href="#kontakt"
-            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[#7c3aed] px-7 py-4 text-base font-semibold text-white shadow-[0_8px_30px_-8px_rgba(124,58,237,0.7)] transition-all duration-200 hover:scale-[1.02] hover:bg-[#8b5cf6] hover:shadow-[0_12px_40px_-8px_rgba(124,58,237,0.9)] md:text-lg"
-          >
-            Jetzt Gespräch buchen
-          </a>
+        <div className="mt-14 grid grid-cols-1 items-start gap-6 md:mt-16 md:grid-cols-2">
+          {TIERS.map((tier) => (
+            <TierCard key={tier.name} tier={tier} />
+          ))}
         </div>
-      </motion.div>
-    </Section>
+      </div>
+    </section>
+  );
+}
+
+function TierCard({ tier }: { tier: Tier }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className={cn(
+        "relative flex flex-col rounded-[18px] p-7 md:p-8",
+        tier.highlight
+          ? "border-[1.5px] border-[#7c3aed]/60 bg-[#0e0220] shadow-[0_28px_80px_-32px_rgba(124,58,237,0.55)]"
+          : "border border-white/10 bg-white/[0.02]",
+      )}
+    >
+      {tier.scarcity ? (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#3a0460] px-3.5 py-1 text-[11px] font-semibold tracking-wide text-[#d6c2ff] ring-1 ring-[#7c3aed]/50">
+          {tier.scarcity}
+        </div>
+      ) : null}
+
+      <div className="text-[18px] font-semibold text-white">{tier.name}</div>
+      <p className="mt-2 text-[13px] leading-snug text-white/55">
+        {tier.pitch}
+      </p>
+
+      <div className="mt-7 flex items-baseline gap-2">
+        <span className="text-[40px] font-bold tracking-tight text-[#a78bfa] md:text-[44px]">
+          {tier.price}
+        </span>
+        <span className="text-[13px] text-white/55">{tier.unit}</span>
+      </div>
+
+      <ul className="mt-7 flex flex-col gap-4">
+        {tier.features.map((f) => (
+          <li key={f.name}>
+            <div className="flex items-start gap-3">
+              <CheckPill />
+              <span className="text-[14px] font-semibold text-white">
+                {f.name}
+              </span>
+            </div>
+            <AnimatePresence initial={false}>
+              {open ? (
+                <motion.ul
+                  key={`sub-${f.name}`}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{
+                    height: { duration: 0.32, ease: [0.22, 1, 0.36, 1] },
+                    opacity: { duration: 0.22, ease: "easeOut" },
+                  }}
+                  className="ml-8 overflow-hidden"
+                >
+                  <div className="mt-2 flex flex-col gap-1.5 pb-1">
+                    {f.subItems.map((s) => (
+                      <div
+                        key={s}
+                        className="flex items-start gap-2 text-[13px] leading-snug text-white/65"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full bg-white/30"
+                        />
+                        <span>{s}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.ul>
+              ) : null}
+            </AnimatePresence>
+          </li>
+        ))}
+      </ul>
+
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="mt-7 inline-flex w-fit items-center gap-2 text-[12.5px] text-white/65 transition-colors hover:text-white"
+      >
+        <Chevron open={open} />
+        {open ? "Alle Details ausblenden" : "Alle Details anzeigen"}
+      </button>
+
+      <div className="mt-6">
+        <BrandButton
+          href="#analyse"
+          variant={tier.ctaVariant}
+          size="md"
+          className="w-full"
+        >
+          Jetzt kaufen
+        </BrandButton>
+      </div>
+    </div>
+  );
+}
+
+function CheckPill() {
+  return (
+    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3a0460]/60 ring-1 ring-[#7c3aed]/60">
+      <svg
+        viewBox="0 0 24 24"
+        className="h-3 w-3 text-[#c4b5fd]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </span>
+  );
+}
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.06] ring-1 ring-white/10"
+      style={{
+        transition: "transform 200ms ease",
+        transform: open ? "rotate(180deg)" : "rotate(0deg)",
+      }}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        className="h-3 w-3 text-white/75"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="6 9 12 15 18 9" />
+      </svg>
+    </span>
   );
 }

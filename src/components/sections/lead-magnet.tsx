@@ -68,7 +68,7 @@ export function LeadMagnet() {
   };
 
   return (
-    <Section id="analyse" className="bg-[#0a0a0a]">
+    <Section id="analyse" className="bg-black">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ export function LeadMagnet() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="mx-auto max-w-3xl text-center"
       >
-        <h2 className="text-3xl leading-[1.05] font-semibold tracking-tight text-white md:text-5xl">
+        <h2 className="text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]">
           Lieber erst mal gucken?
         </h2>
         <p className="mt-5 text-base text-[#a1a1aa] md:text-lg">
@@ -212,7 +212,7 @@ export function LeadMagnet() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-[#7c3aed] px-7 py-4 text-base font-semibold text-white shadow-[0_8px_30px_-8px_rgba(124,58,237,0.7)] transition-all duration-200 hover:scale-[1.02] hover:bg-[#8b5cf6] hover:shadow-[0_12px_40px_-8px_rgba(124,58,237,0.9)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
+                className="mt-2 inline-flex w-full items-center justify-center rounded-[11px] bg-[#3a0460] px-5 py-3.5 text-[14px] font-semibold tracking-tight text-white shadow-[0_8px_24px_-10px_rgba(58,4,96,0.9)] transition-all duration-200 hover:bg-[#52097f] hover:shadow-[0_12px_28px_-10px_rgba(82,9,127,0.95)] active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? "Wird gesendet..." : "Analyse anfordern"}
               </button>
