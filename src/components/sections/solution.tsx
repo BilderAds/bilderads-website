@@ -2,31 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 type Benefit = {
   number: string;
   title: string;
   description: string;
 };
-
-const BENEFITS: Benefit[] = [
-  {
-    number: "01",
-    title: "Mehr zahlende Kunden",
-    description: "Planbar neue Kunden jede Woche durch Google Ads.",
-  },
-  {
-    number: "02",
-    title: "#1 bei Google",
-    description:
-      "Sofort ganz oben bei Google durch optimierte Google Ads und Landing Page.",
-  },
-  {
-    number: "03",
-    title: "Bessere Aufträge",
-    description: "Aufträge die sich lohnen. Mehr Marge, weniger Diskussionen.",
-  },
-];
 
 // MagicBento effect params
 const GLOW_COLOR = "132,0,255"; // #8400ff
@@ -50,6 +32,8 @@ function makeParticles(count: number) {
 }
 
 export function Solution() {
+  const t = useTranslations("solution");
+  const BENEFITS = t.raw("benefits") as Benefit[];
   const rootRef = useRef<HTMLDivElement | null>(null);
   const spotlightRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -170,11 +154,11 @@ export function Solution() {
           className="mx-auto max-w-3xl text-center"
         >
           <span className="inline-flex items-center rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 px-3.5 py-1.5 text-xs font-medium tracking-wider text-[#c4b5fd] uppercase backdrop-blur-sm">
-            BilderAds Vorteile
+            {t("kicker")}
           </span>
 
           <h2 className="mt-6 text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]">
-            Das hier wirst du lieben:
+            {t("headline")}
           </h2>
         </motion.div>
 

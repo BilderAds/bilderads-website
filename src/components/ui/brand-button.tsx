@@ -41,11 +41,11 @@ const sizeMap: Record<Size, string> = {
 
 const variantMap: Record<Variant, string> = {
   primary:
-    "bg-[#3a0460] text-white shadow-[0_8px_24px_-10px_rgba(58,4,96,0.9)] " +
-    "hover:bg-[#52097f] hover:shadow-[0_12px_28px_-10px_rgba(82,9,127,0.95)] " +
+    "bg-[#3a0560] text-white ring-1 ring-[#b554fa]/60 shadow-[0_8px_24px_-10px_rgba(58,5,96,0.9)] " +
+    "hover:bg-[#4d0a7c] hover:ring-[#b554fa] hover:shadow-[0_12px_28px_-10px_rgba(181,84,250,0.6)] " +
     "active:translate-y-[1px]",
   outline:
-    "bg-transparent text-white ring-1 ring-white/70 hover:ring-white hover:bg-white/[0.06]",
+    "bg-transparent text-white ring-1 ring-[#b554fa]/60 hover:ring-[#b554fa] hover:bg-[#b554fa]/[0.08]",
   ghost: "bg-transparent text-white/85 hover:text-white",
 };
 

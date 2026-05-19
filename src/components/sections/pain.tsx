@@ -1,28 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const ROW_TOP = [
-  "Schwankende Aufträge",
-  "Werbung verbrennt Geld",
-  "Personalmangel",
-  "Neue Website unbezahlbar",
-  "Schwankende Aufträge",
-  "Werbung verbrennt Geld",
-  "Personalmangel",
-];
-
-const ROW_BOTTOM = [
-  "Selber Kunden suchen",
-  "Keine guten Aufträge",
-  "Nicht #1 bei Google",
-  "Wenig Gewinn pro Auftrag",
-  "Selber Kunden suchen",
-  "Keine guten Aufträge",
-  "Nicht #1 bei Google",
-];
+import { useTranslations } from "next-intl";
 
 export function Pain() {
+  const t = useTranslations("pain");
+  const rowTop = t.raw("rowTop") as string[];
+  const rowBottom = t.raw("rowBottom") as string[];
+  const ROW_TOP = [...rowTop, ...rowTop.slice(0, 3)];
+  const ROW_BOTTOM = [...rowBottom, ...rowBottom.slice(0, 3)];
+
   return (
     <section
       id="pain"
@@ -37,15 +24,22 @@ export function Pain() {
           transition={{ duration: 0.55, ease: "easeOut" }}
           className="text-center text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]"
         >
-          Jeder Betrieb hasst es:
+          {t("headline")}
         </motion.h2>
       </div>
 
       {/* Marquees go full viewport width */}
-      <div className="mt-12 flex w-full flex-col gap-4 md:mt-16 md:gap-5">
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+        className="mt-12 flex w-full flex-col gap-4 md:mt-16 md:gap-5"
+      >
         <MarqueeRow items={ROW_TOP} direction="left" />
         <MarqueeRow items={ROW_BOTTOM} direction="right" />
-      </div>
+      </motion.div>
+      {/* ROW arrays evaluated inside component */}
 
       <div
         aria-hidden

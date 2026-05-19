@@ -1,41 +1,48 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { BrandButton } from "@/components/ui/brand-button";
-import { cn } from "@/lib/utils";
 
 type Slide = {
-  title: string;
-  subtitle?: string;
-  gradient: string;
+  name: string;
+  brancheKey: "haus" | "kita" | "ablass" | "ecomet" | "zahn";
+  image: string;
+  url: string;
 };
 
 const SLIDES: Slide[] = [
   {
-    title: "Mehr Aufträge.\nBessere Margen.",
-    subtitle: "Heizungsbau",
-    gradient: "from-[#1c1c1f] via-[#0d0d10] to-[#050507]",
+    name: "Haus der Schönheit",
+    brancheKey: "haus",
+    image: "/showcase/haus-der-schoenheit-v2.webp",
+    url: "https://haus-der-schoenheit.vercel.app/",
   },
   {
-    title: "Saubere Räume.\nStarker Eindruck.",
-    subtitle: "Gebäudereinigung",
-    gradient: "from-[#1f3a3a] via-[#0e1f1f] to-[#04100e]",
+    name: "Kita Oberbachem",
+    brancheKey: "kita",
+    image: "/showcase/kita-oberbachem.webp",
+    url: "https://kita-oberbachem.vercel.app/",
   },
   {
-    title: "Schnell vor Ort.\nFair beraten.",
-    subtitle: "Schlüsseldienst",
-    gradient: "from-[#3a0460] via-[#1a0030] to-[#0a001a]",
+    name: "Gebäudereinigung Ablass",
+    brancheKey: "ablass",
+    image: "/showcase/gebaeudereinigung-ablass.webp",
+    url: "https://gebaeudereinigung-ablass.vercel.app/",
   },
   {
-    title: "Glasbruch heute\nnoch repariert.",
-    subtitle: "Glaserei",
-    gradient: "from-[#3a2a04] via-[#1f1402] to-[#0a0500]",
+    name: "Ecomet",
+    brancheKey: "ecomet",
+    image: "/showcase/ecomet.webp",
+    url: "https://ecometapp.de/",
   },
   {
-    title: "Stromausfall?\nWir sind da.",
-    subtitle: "Elektriker",
-    gradient: "from-[#3a0420] via-[#1f0210] to-[#0a0008]",
+    name: "Zahnplus24",
+    brancheKey: "zahn",
+    image: "/showcase/zahnplus24.webp",
+    url: "https://zahnplus24.de/",
   },
 ];
 
@@ -63,6 +70,7 @@ const clamp = (v: number, lo: number, hi: number) =>
  *   from old slide to new slide — smooth swap, no hop.
  */
 export function Showcase() {
+  const t = useTranslations("showcase");
   const count = SLIDES.length;
   const frameRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(0);
@@ -129,20 +137,30 @@ export function Showcase() {
   const slotSlideIndex = (slotIdx: number) =>
     wrap(active + (slotIdx - centerSlot), count);
 
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startAutoCycle = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setActive((a) => wrap(a + 1, count));
+    }, AUTO_MS);
+  }, [count]);
+
+  useEffect(() => {
+    startAutoCycle();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [startAutoCycle]);
+
   const move = useCallback(
     (dir: "prev" | "next") => {
       if (count < 2) return;
       setActive((a) => wrap(a + (dir === "next" ? 1 : -1), count));
+      startAutoCycle();
     },
-    [count],
+    [count, startAutoCycle],
   );
-
-  const moveRef = useRef(move);
-  moveRef.current = move;
-  useEffect(() => {
-    const id = setInterval(() => moveRef.current("next"), AUTO_MS);
-    return () => clearInterval(id);
-  }, []);
 
   return (
     <section
@@ -155,11 +173,9 @@ export function Showcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
-          className="text-center text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]"
+          className="text-balance text-center text-[20px] leading-[1.2] tracking-[-0.015em] font-semibold text-white tablet:text-[30px] desktop:text-[40px]"
         >
-          Deine neue Website macht
-          <br />
-          Besucher zu Kunden
+          {t("headline")}
         </motion.h2>
 
         <div
@@ -198,18 +214,17 @@ export function Showcase() {
         <div className="mx-auto mt-16 max-w-2xl rounded-3xl border border-white/10 bg-white/[0.02] px-6 py-10 text-center tablet:mt-20">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-[#3a0460]/40 px-3.5 py-1.5 text-[11px] font-semibold tracking-wider text-[#d6c2ff] uppercase ring-1 ring-[#7c3aed]/40">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#a78bfa]" />
-            Nur noch 3 verfügbar
+            {t("scarcity")}
           </div>
           <h3 className="text-[24px] font-semibold tracking-tight text-white tablet:text-[30px]">
-            Kostenlose Website
+            {t("offerTitle")}
           </h3>
           <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-white/65">
-            Sichere dir jetzt das Gold Bundle und erhalte eine professionelle
-            Website im Wert von 3.000 € komplett kostenlos dazu.
+            {t("offerSub")}
           </p>
           <div className="mt-6 flex justify-center">
-            <BrandButton href="#analyse" size="md">
-              Jetzt mehr Kunden bekommen
+            <BrandButton href="/funnel-start" size="md">
+              {t("cta")}
             </BrandButton>
           </div>
         </div>
@@ -237,9 +252,21 @@ function SlotShell({
   cardHeight: number;
   onSideClick: () => void;
 }) {
+  const t = useTranslations("showcase");
+  const slide = SLIDES[slideIdx];
+  const branche = t(`branchen.${slide.brancheKey}`);
+
+  const handleClick = () => {
+    if (isActive) {
+      window.open(slide.url, "_blank", "noopener,noreferrer");
+    } else {
+      onSideClick();
+    }
+  };
+
   return (
     <div
-      onClick={onSideClick}
+      onClick={handleClick}
       style={{
         position: "absolute",
         left: pos.left,
@@ -247,12 +274,12 @@ function SlotShell({
         width: pos.width,
         height: cardHeight,
         borderRadius: RADIUS,
-        cursor: isActive ? "default" : "pointer",
+        cursor: "pointer",
         zIndex: isActive ? 3 : 2,
         transition:
           "left 520ms cubic-bezier(0.22, 1, 0.36, 1), width 520ms cubic-bezier(0.22, 1, 0.36, 1)",
       }}
-      className="overflow-hidden ring-1 ring-white/10"
+      className="group overflow-hidden bg-[#0a0a0c] ring-1 ring-white/10"
     >
       <AnimatePresence initial={false}>
         <motion.div
@@ -261,39 +288,49 @@ function SlotShell({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: CROSSFADE, ease: [0.22, 1, 0.36, 1] }}
-          className={cn(
-            "absolute inset-0 bg-gradient-to-br",
-            SLIDES[slideIdx].gradient,
-          )}
+          className="absolute inset-0"
         >
-          {isActive ? (
-            <div className="absolute inset-x-5 top-5 z-10 hidden items-center gap-1.5 tablet:flex">
-              <span className="h-2.5 w-2.5 rounded-full bg-white/30" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            </div>
-          ) : null}
+          <Image
+            src={slide.image}
+            alt={`${slide.name} — ${branche}`}
+            fill
+            sizes="(min-width: 1440px) 800px, (min-width: 810px) 60vw, 90vw"
+            className="object-cover object-top"
+            loading="eager"
+          />
 
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_55%)]" />
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 transition-opacity duration-500"
             style={{
               background: isActive
-                ? "linear-gradient(180deg, rgba(0,0,0,0.02) 35%, rgba(0,0,0,0.38) 100%)"
-                : "linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.20))",
+                ? "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)"
+                : "linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55))",
             }}
           />
 
           {isActive ? (
-            <div className="absolute inset-x-7 bottom-6">
-              <h3 className="whitespace-pre-line text-[22px] leading-tight font-semibold tracking-tight text-white tablet:text-[30px] desktop:text-[40px]">
-                {SLIDES[slideIdx].title}
-              </h3>
-              {SLIDES[slideIdx].subtitle ? (
-                <div className="mt-2 text-[12px] text-white/65 tablet:text-[13px]">
-                  {SLIDES[slideIdx].subtitle}
+            <div className="absolute inset-x-5 bottom-5 z-10 flex items-end justify-between gap-4 tablet:inset-x-7 tablet:bottom-6">
+              <div>
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-white/80 uppercase ring-1 ring-white/15 backdrop-blur-sm tablet:text-[11px]">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#a78bfa]" />
+                  {branche}
                 </div>
-              ) : null}
+                <div className="mt-2 text-[15px] font-semibold tracking-tight text-white tablet:text-[18px] desktop:text-[20px]">
+                  {slide.name}
+                </div>
+              </div>
+              <div className="hidden items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white/85 ring-1 ring-white/15 backdrop-blur-sm transition-colors group-hover:bg-white/20 group-hover:text-white tablet:inline-flex">
+                {t("liveLabel")}
+                <svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path
+                    d="M5 11L11 5M11 5H6M11 5V10"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
           ) : null}
         </motion.div>

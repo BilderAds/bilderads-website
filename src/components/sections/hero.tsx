@@ -1,11 +1,29 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { BrandButton } from "@/components/ui/brand-button";
 import { HeroParticles } from "./hero-particles";
 
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.2, delayChildren: 0.25 },
+  },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 export function Hero() {
+  const t = useTranslations("hero");
   const sectionRef = useRef<HTMLElement | null>(null);
   const spotRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
@@ -50,7 +68,7 @@ export function Hero() {
       ref={sectionRef}
       onPointerMove={onMove}
       onPointerLeave={onLeave}
-      className="relative isolate flex min-h-screen items-center overflow-hidden bg-black pt-24 pb-16 tablet:pt-28 tablet:pb-20 desktop:pt-32 desktop:pb-24"
+      className="relative isolate flex flex-col overflow-hidden bg-black pt-24 pb-24 tablet:pt-32 tablet:pb-32 desktop:pt-40 desktop:pb-40"
     >
       {/* Background glow + particles */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -73,76 +91,86 @@ export function Hero() {
         }}
       />
 
-      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-5 tablet:grid-cols-10 tablet:gap-10 tablet:px-10 desktop:gap-20 desktop:px-20">
+      {/* Floating ambient dots around the pill area */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-[120px] z-[1] mx-auto hidden h-24 max-w-[1440px] tablet:block"
+      >
+        <div className="relative mx-auto h-full px-10 desktop:px-20">
+          <span className="absolute top-2 left-[12%] h-1 w-1 rounded-full bg-[#a78bfa]/60 shadow-[0_0_10px_2px_rgba(124,58,237,0.5)] motion-safe:animate-pulse" />
+          <span className="absolute top-10 left-[30%] h-1.5 w-1.5 rounded-full bg-[#c4b5fd]/80 shadow-[0_0_14px_3px_rgba(124,58,237,0.7)] motion-safe:animate-pulse" />
+          <span className="absolute top-4 left-[55%] h-1 w-1 rounded-full bg-[#a78bfa]/50 shadow-[0_0_8px_2px_rgba(124,58,237,0.4)]" />
+        </div>
+      </div>
+
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={container}
+        className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-5 tablet:grid-cols-10 tablet:gap-10 tablet:px-10 desktop:gap-20 desktop:px-20"
+      >
         {/* LEFT: copy (70%) */}
         <div className="tablet:col-span-7">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            variants={fadeUp}
             className="inline-flex items-center gap-2 rounded-full border border-[#7c3aed]/30 bg-[#3a0460]/40 px-4 py-1.5 text-[12px] font-medium text-[#d6c2ff] backdrop-blur"
           >
             <Spark />
-            3.700.000 €+ für Kunden generiert
+            {t("pill")}
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.08 }}
-            className="mt-6 text-[36px] leading-[1.2] tracking-[-0.01em] font-bold text-balance text-white tablet:text-[48px] tablet:leading-[1.15] tablet:tracking-[-0.02em] desktop:text-[72px] desktop:leading-[1.1] desktop:tracking-[-0.03em]"
+            variants={fadeUp}
+            className="mt-6 text-[32px] leading-[1.15] tracking-[-0.015em] font-bold text-balance whitespace-pre-line text-white tablet:text-[42px] tablet:leading-[1.12] tablet:tracking-[-0.02em] desktop:text-[56px] desktop:leading-[1.08] desktop:tracking-[-0.025em]"
           >
-            Mehr zahlende Kunden
-            <br />
-            für dein Business.
+            {t("headline")}
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.16 }}
-            className="mt-6 max-w-xl text-[16px] leading-[1.65] text-white/65 tablet:text-[17px] tablet:leading-[1.7] desktop:text-[18px]"
+            variants={fadeUp}
+            className="mt-6 max-w-xl whitespace-pre-line text-[16px] leading-[1.65] text-white/65 tablet:text-[17px] tablet:leading-[1.7] desktop:text-[18px]"
           >
-            Planbar neue Kunden, jede Woche.
-            <br />
-            Google Ads, Website und Anzeigen für lokale Dienstleister.
+            {t("subline")}
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.24 }}
-            className="mt-8 flex flex-col items-start gap-6"
-          >
-            <BrandButton href="#analyse" size="lg">
-              Jetzt mehr Kunden bekommen
-            </BrandButton>
+          <div className="mt-8 flex flex-col items-start gap-6">
+            <motion.div variants={fadeUp}>
+              <BrandButton href="/funnel-start" size="lg">
+                {t("cta")}
+              </BrandButton>
+            </motion.div>
 
             <ol className="flex flex-wrap items-center gap-x-7 gap-y-3 text-[13px] text-white/70 tablet:text-[14px]">
-              <Step n={1}>Button drücken</Step>
-              <Step n={2}>7 Fragen beantworten</Step>
-              <Step n={3}>Kostenloses Beratungsgespräch</Step>
+              <motion.li variants={fadeUp} className="inline-flex items-center gap-2.5">
+                <StepDot n={1} />
+                <span className="font-medium">{t("steps.1")}</span>
+              </motion.li>
+              <motion.li variants={fadeUp} className="inline-flex items-center gap-2.5">
+                <StepDot n={2} />
+                <span className="font-medium">{t("steps.2")}</span>
+              </motion.li>
+              <motion.li variants={fadeUp} className="inline-flex items-center gap-2.5">
+                <StepDot n={3} />
+                <span className="font-medium">{t("steps.3")}</span>
+              </motion.li>
             </ol>
-          </motion.div>
+          </div>
         </div>
 
         {/* RIGHT: video slot (30%) */}
-        <div className="tablet:col-span-3">
+        <motion.div variants={fadeUp} className="tablet:col-span-3">
           <VideoSlot />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
 
-function Step({ n, children }: { n: number; children: React.ReactNode }) {
+function StepDot({ n }: { n: number }) {
   return (
-    <li className="inline-flex items-center gap-2.5">
-      <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#3a0460]/40 text-[12px] font-semibold text-[#d6c2ff] ring-1 ring-[#7c3aed]/50 tablet:h-8 tablet:w-8 tablet:text-[13px]">
-        {n}
-      </span>
-      <span className="font-medium">{children}</span>
-    </li>
+    <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full bg-transparent text-[12px] font-semibold text-[#c4b5fd] ring-1 ring-[#7c3aed]/60 tablet:h-8 tablet:w-8 tablet:text-[13px]">
+      {n}
+    </span>
   );
 }
 
@@ -160,6 +188,7 @@ function Spark() {
 /* ─── Video slot ──────────────────────────────────────────────────────── */
 
 function VideoSlot() {
+  const t = useTranslations("hero.video");
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -192,10 +221,10 @@ function VideoSlot() {
         <div className="absolute inset-x-5 top-5 flex items-center justify-between">
           <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1 text-[11px] font-medium text-white/80 backdrop-blur">
             <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
-            Showreel · 1 Min
+            {t("label")}
           </span>
           <span className="rounded-full bg-black/40 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-white/70 uppercase backdrop-blur">
-            Platzhalter
+            {t("placeholder")}
           </span>
         </div>
 
@@ -220,10 +249,10 @@ function VideoSlot() {
         {/* caption bottom */}
         <div className="absolute inset-x-5 bottom-5">
           <div className="text-[15px] font-semibold leading-tight text-white">
-            So bekommst du planbar mehr Kunden
+            {t("captionTitle")}
           </div>
           <div className="mt-1 text-[12px] text-white/65">
-            Kevin erklärt in 1 Minute wie&apos;s funktioniert
+            {t("captionSub")}
           </div>
         </div>
       </button>

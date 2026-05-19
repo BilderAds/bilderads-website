@@ -1,0 +1,469 @@
+{
+  "metadata": {
+    "title": "BilderAds — Mehr zahlende Kunden für lokale Dienstleister",
+    "description": "Google Ads, Website & Anzeigen für lokale Dienstleister. Planbar mehr Anfragen jede Woche. 3.700.000 €+ für Kunden generiert.",
+    "keywords": [
+      "Google Ads für Handwerker",
+      "Performance Marketing Dienstleister",
+      "Google Ads Agentur",
+      "Website für Handwerk",
+      "Lokales Marketing",
+      "Maler Marketing",
+      "Sanitär Marketing",
+      "Glaser Marketing",
+      "Schlüsseldienst Marketing",
+      "Mehr Kunden lokal",
+      "Google Ads Köln",
+      "Google Ads Berlin",
+      "Lead-Generierung Handwerk"
+    ]
+  },
+  "header": {
+    "nav": {
+      "ergebnisse": "Ergebnisse",
+      "bilderads": "BilderAds",
+      "websites": "Websites",
+      "analyse": "Kostenlose Analyse",
+      "bewertungen": "Bewertungen",
+      "preise": "Preise",
+      "faq": "FAQ"
+    },
+    "cta": "Mehr Kunden bekommen",
+    "localeSwitch": {
+      "de": "DE",
+      "en": "EN",
+      "label": "Sprache wechseln"
+    }
+  },
+  "hero": {
+    "pill": "3.700.000 €+ für Kunden generiert",
+    "headline": "Mehr zahlende Kunden\nfür dein Business.",
+    "subline": "Planbar neue Kunden, jede Woche.\nGoogle Ads, Website und Anzeigen für lokale Dienstleister.",
+    "cta": "Jetzt mehr Kunden bekommen",
+    "steps": {
+      "1": "Button drücken",
+      "2": "7 Fragen beantworten",
+      "3": "Kostenloses Beratungsgespräch"
+    },
+    "video": {
+      "label": "Showreel · 1 Min",
+      "placeholder": "Platzhalter",
+      "captionTitle": "So bekommst du planbar mehr Kunden",
+      "captionSub": "Kevin erklärt in 1 Minute wie's funktioniert"
+    }
+  },
+  "cases": {
+    "headlineTop": "2.300.000 €+ Umsatz",
+    "headlineBottom": "für Lokale Dienstleister wie dich",
+    "umsatzPrefix": "Über",
+    "umsatzSuffix": "Umsatz",
+    "cta": "Jetzt mehr Kunden bekommen",
+    "items": {
+      "abfluss": {
+        "branche": "Abflussreinigung",
+        "umsatz": "1.800.000 €",
+        "zeitraum": "Umsatz",
+        "detail": "262.000 € investiert",
+        "service": "Dienstleistung"
+      },
+      "gebaeude": {
+        "branche": "Gebäudereinigung",
+        "umsatz": "295.598 €",
+        "zeitraum": "in 3 Jahren",
+        "service": "Dienstleistung"
+      },
+      "schmuck": {
+        "branche": "Schmuck",
+        "umsatz": "407.758 €",
+        "zeitraum": "in 10 Monaten",
+        "service": "Google Ads"
+      },
+      "uhren": {
+        "branche": "Uhren",
+        "umsatz": "123.088 €",
+        "zeitraum": "in 3 Monaten",
+        "service": "Google Ads"
+      },
+      "supplements": {
+        "branche": "Supplements",
+        "umsatz": "140.809 €",
+        "zeitraum": "11,71 € pro Kunde",
+        "service": "Google Ads"
+      }
+    },
+    "niches": {
+      "set1": ["Malerbetrieb", "Elektriker", "Glaserei", "Entrümpelung"],
+      "set2": ["Gebäudereinigung", "Sanitär", "Schlüsseldienst", "Ungezieferbekämpfung"],
+      "set3": ["Dachdecker", "Heizungsbau", "Fliesenleger", "Garten & Landschaft"],
+      "set4": ["Tischler", "Bodenleger", "Maurer", "Trockenbau"]
+    },
+    "plans": {
+      "gold": "Plan 1: Gold",
+      "blackDiamond": "Plan 3: Black Diamond"
+    }
+  },
+  "pain": {
+    "headline": "Jeder Betrieb hasst es:",
+    "rowTop": [
+      "Schwankende Aufträge",
+      "Werbung verbrennt Geld",
+      "Personalmangel",
+      "Neue Website unbezahlbar"
+    ],
+    "rowBottom": [
+      "Selber Kunden suchen",
+      "Keine guten Aufträge",
+      "Nicht #1 bei Google",
+      "Wenig Gewinn pro Auftrag"
+    ]
+  },
+  "solution": {
+    "kicker": "BilderAds Vorteile",
+    "headline": "Das hier wirst du lieben:",
+    "benefits": [
+      {
+        "number": "01",
+        "title": "Mehr zahlende Kunden",
+        "description": "Planbar neue Kunden jede Woche durch Google Ads."
+      },
+      {
+        "number": "02",
+        "title": "#1 bei Google",
+        "description": "Sofort ganz oben bei Google durch optimierte Google Ads und Landing Page."
+      },
+      {
+        "number": "03",
+        "title": "Bessere Aufträge",
+        "description": "Aufträge die sich lohnen. Mehr Marge, weniger Diskussionen."
+      }
+    ]
+  },
+  "process": {
+    "kicker": "So einfach geht's",
+    "headline": "In 3 Schritten zu mehr Kunden",
+    "cta": "Jetzt mehr Kunden bekommen",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Erstgespräch",
+        "body": "Wir schauen gemeinsam wie wir dir mehr zahlende Kunden bringen können."
+      },
+      {
+        "n": "02",
+        "title": "Alles wird für dich eingerichtet",
+        "body": "Website, Google Ads, Google Business Profil, Reporting."
+      },
+      {
+        "n": "03",
+        "title": "Zahlende Kunden rufen an",
+        "body": "Jede Woche neue zahlende Kunden, du entscheidest mit wem du arbeitest."
+      }
+    ]
+  },
+  "showcase": {
+    "headline": "Deine neue Website macht Besucher zu Kunden",
+    "scarcity": "Nur noch 3 verfügbar",
+    "offerTitle": "Kostenlose Website",
+    "offerSub": "Sichere dir jetzt das Gold Bundle und erhalte eine professionelle Website im Wert von 3.000 € komplett kostenlos dazu.",
+    "cta": "Jetzt mehr Kunden bekommen",
+    "branchen": {
+      "haus": "Kosmetikstudio",
+      "kita": "Kindertagesstätte",
+      "ablass": "Gebäudereinigung",
+      "ecomet": "Online-Shop",
+      "zahn": "Zahnarztpraxis"
+    },
+    "liveLabel": "Live ansehen"
+  },
+  "reviews": {
+    "headline": "So erleben Kunden die Zusammenarbeit",
+    "subline": "Echte Stimmen von Inhabern, die mit BilderAds neue Kunden gewinnen und ihr Geschäft planbar machen.",
+    "cta": "Jetzt mehr Kunden bekommen",
+    "items": [
+      {
+        "text": "Sehr strukturiertes Team, schnelle Antworten bei Fragen. Klare Empfehlung von mir.",
+        "name": "Philipp",
+        "plan": "Gold"
+      },
+      {
+        "text": "Wir haben vorher fast ausschließlich mit Videos gearbeitet. Durch die neuen Bilder haben wir unseren Umsatz im ersten Monat um 53.000 € gesteigert.",
+        "name": "Tobias",
+        "plan": "Black Diamond"
+      },
+      {
+        "text": "Was uns überzeugt hat war die Struktur und das klare System. Alles ist nachvollziehbar und top geplant.",
+        "name": "Leonard",
+        "plan": "Black Diamond"
+      },
+      {
+        "text": "Wir dachten lange, dass uns nur ein neues Produkt rettet. Lag aber am Marketing. Nach drei Monaten waren wir voll ausgebucht.",
+        "name": "Daniel",
+        "plan": "Gold"
+      },
+      {
+        "text": "Ehrlich gesagt war ich skeptisch ob man mit Bildern heute noch was rausholen kann. Meine Skepsis ist schnell verflogen.",
+        "name": "Keanu",
+        "plan": "Gold"
+      },
+      {
+        "text": "Vor BilderAds haben wir einfach viel getestet. Jetzt wissen wir nach jedem Test, warum etwas funktioniert oder nicht.",
+        "name": "Leon",
+        "plan": "Gold"
+      },
+      {
+        "text": "Klare Ansagen, keine langweilige Theorie. Einfach machen und Ergebnisse sehen. So muss das laufen.",
+        "name": "Sarah",
+        "plan": "Black Diamond"
+      },
+      {
+        "text": "Bestes Geld das wir je ausgegeben haben. Anfragen kommen jede Woche rein, ich muss nichts mehr selber tun.",
+        "name": "Max M.",
+        "plan": "Gold"
+      }
+    ]
+  },
+  "pricing": {
+    "headlineTop": "2 Wege, 1 Ziel",
+    "headlineBottom": "Mehr Kunden für dich",
+    "details": {
+      "show": "Alle Details anzeigen",
+      "hide": "Alle Details ausblenden"
+    },
+    "buyCta": "Jetzt kaufen",
+    "gold": {
+      "name": "Gold",
+      "scarcity": "Nur noch 3 Plätze frei",
+      "pitch": "Jeden Monat mehr Kunden bekommen, ohne einen Finger zu rühren.",
+      "price": "3.000 €",
+      "unit": "/ Monat",
+      "features": [
+        {
+          "name": "Google Werbung",
+          "subItems": ["Google Search Ads", "40 Image Ads für Google"]
+        },
+        {
+          "name": "Website",
+          "subItems": ["Design & Texte", "Kontaktformular & Anfragen-Optimierung", "Mobile optimiert"]
+        },
+        {
+          "name": "Google Business Profil Optimierung",
+          "subItems": ["Vollständiges Profil Setup", "Bewertungsstrategie", "Lokale Sichtbarkeit"]
+        },
+        {
+          "name": "Wöchentlicher Performance Bericht",
+          "subItems": ["Anfragen & Kosten im Überblick"]
+        },
+        {
+          "name": "Wöchentliche Update Meetings",
+          "subItems": ["30 Minuten Online Besprechung"]
+        }
+      ]
+    },
+    "blackDiamond": {
+      "name": "Black Diamond",
+      "pitch": "Für Dienstleister die mehr Kunden wollen, ohne Risiko einzugehen.",
+      "price": "5.000 €",
+      "unit": "/ Monat",
+      "features": [
+        {
+          "name": "Google Werbung",
+          "subItems": ["Google Search Ads", "20 Image Ads für Google"]
+        },
+        {
+          "name": "Website",
+          "subItems": ["Design & Tests", "Kontaktformular & Anfragen Optimierung", "Mobile optimiert"]
+        },
+        {
+          "name": "Facebook + Instagram Werbung",
+          "subItems": ["Setup der Meta-Werbung", "Erstellung der Werbeanzeigen", "Media-Buying der Werbeanzeigen", "Optimierung der Werbeanzeigen"]
+        },
+        {
+          "name": "Google Business Profil Optimierung",
+          "subItems": ["Vollständige Profil-Optimierung", "Bewertungs-Management", "Lokale Suche im Umkreis"]
+        },
+        {
+          "name": "Wöchentlicher Performance Bericht",
+          "subItems": ["Anfragen & Kosten im Überblick"]
+        }
+      ]
+    }
+  },
+  "leadMagnet": {
+    "headline": "Lieber erst mal gucken?",
+    "subline": "Wir analysieren deine Website und deine Google Ads. Kostenlos. 0 Verpflichtung.",
+    "kicker": "Kostenlose Marketing-Analyse",
+    "youGet": "Du bekommst:",
+    "benefits": [
+      "Audit deiner aktuellen Website (was hält Kunden ab?)",
+      "Check deiner Google Ads (verbrennst du Geld?)",
+      "3 konkrete Hebel die sofort mehr Anfragen bringen",
+      "Schriftlicher Report per E-Mail"
+    ],
+    "tiles": {
+      "duration": "Dauer",
+      "durationValue": "48h",
+      "cost": "Kosten",
+      "costValue": "0 €",
+      "pressure": "Verkaufsdruck",
+      "pressureValue": "0"
+    },
+    "form": {
+      "company": "Firmenname",
+      "companyPh": "Mustermann GmbH",
+      "website": "Website",
+      "websitePh": "https://deine-firma.de",
+      "email": "E-Mail",
+      "emailPh": "du@deine-firma.de",
+      "branche": "Branche",
+      "branchePlease": "Bitte wählen",
+      "submit": "Analyse anfordern",
+      "submitting": "Wird gesendet...",
+      "disclaimer": "Antwort innerhalb von 48h. Keine Newsletter, kein Spam."
+    },
+    "success": {
+      "title": "Danke!",
+      "body": "Wir melden uns innerhalb von 48h bei dir mit deiner persönlichen Marketing-Analyse."
+    }
+  },
+  "faq": {
+    "headlineTop": "Fragen und Antworten",
+    "headlineBottom": "rund um unsere BilderAds",
+    "cta": "Jetzt mehr Kunden bekommen",
+    "items": [
+      {
+        "q": "Funktioniert das auch für mein Business?",
+        "a": "Wenn du lokaler Dienstleister bist (Maler, Elektriker, Sanitär, Reinigung, Glaser, Entrümpelung, Schlüsseldienst, Dachdecker) – ja. Wir testen das im Erstgespräch in 5 Minuten."
+      },
+      {
+        "q": "Für wen ist BilderAds geeignet?",
+        "a": "Inhaber lokaler Dienstleister, die mehr zahlende Kunden wollen, ohne selber Werbung machen zu müssen. Du musst die Aufträge nur abarbeiten können."
+      },
+      {
+        "q": "Macht ihr nur Creatives oder auch Strategie?",
+        "a": "Beides. Werbeanzeigen, Website, Google Business Profil, Zielgruppen, Budget, Reporting. Komplettes Performance-Setup, nicht nur hübsche Bilder."
+      },
+      {
+        "q": "Schaltet ihr auch die Ads (Media Buying)?",
+        "a": "Ja. Google Ads, optional Facebook und Instagram (Black Diamond). Du musst nichts selber klicken."
+      },
+      {
+        "q": "Wie läuft die Zusammenarbeit ab?",
+        "a": "1. Erstgespräch · 2. Onboarding-Call (60 Min) · 3. Wir bauen Ads + Website · 4. Anzeigen gehen live · 5. Wöchentlicher Performance-Bericht. Du musst nur dabei sein."
+      },
+      {
+        "q": "Muss ich einen Call machen?",
+        "a": "Ja, einen kurzen. 30 Minuten. Wir gucken ob wir zusammen passen. Kein Verkaufsdruck, keine Folie."
+      },
+      {
+        "q": "Was kostet BilderAds?",
+        "a": "Gold 3.000 € / Monat, Black Diamond 5.000 € / Monat. Dazu dein Google-Ads-Budget (zahlst direkt an Google). Mindestlaufzeit 3 Monate, danach monatlich kündbar."
+      },
+      {
+        "q": "Arbeitet ihr mit jedem?",
+        "a": "Nein. Aktuell nehmen wir nur lokale Dienstleister, und auch nur wenn wir glauben, dass wir Ergebnisse liefern können. Nicht jede Branche, nicht jede Stadt."
+      },
+      {
+        "q": "Was ist der Sinn des Lebens?",
+        "a": "Mehr zahlende Kunden für dein Business. Probier's mit dem Button unten."
+      }
+    ]
+  },
+  "footerCta": {
+    "headline": "Bereit für neue Kunden?",
+    "subline": "30 Min Gespräch. Kein Verkaufsdruck. Wenn wir nicht passen, sagen wir's dir.",
+    "cta": "Jetzt Gespräch buchen",
+    "writeUs": "Lieber schreiben?",
+    "whatsapp": "WhatsApp +49 [Nummer]",
+    "footnote": "Wenn wir nicht der richtige Partner sind, sagen wir's dir im Call. Und zeigen dir wer für dich besser passt."
+  },
+  "footer": {
+    "tagline": "Performance Marketing für lokale Dienstleister.",
+    "columns": {
+      "quickLinks": "Quick Links",
+      "legal": "Rechtliches",
+      "contact": "Kontakt"
+    },
+    "links": {
+      "ergebnisse": "Ergebnisse",
+      "preise": "Preise",
+      "faq": "FAQ",
+      "kontakt": "Kontakt",
+      "impressum": "Impressum",
+      "datenschutz": "Datenschutz"
+    },
+    "phone": "+49 [Nummer]",
+    "copy": "© 2026 BilderAds. Alle Rechte vorbehalten."
+  },
+  "funnel": {
+    "scarcity": "Nur noch 1 freier Platz",
+    "kicker": "In 1 Minute zu mehr Zahlenden Kunden",
+    "lastStep": "Letzter Schritt",
+    "stepOf": "Schritt {current} von {total}",
+    "back": "Zurück",
+    "next": "Weiter",
+    "multiHint": "Mehrfachauswahl möglich",
+    "trust": "100% kostenfrei & sicher",
+    "contact": {
+      "title": "Deine persönliche Analyse\nwird vorbereitet.",
+      "sub": "Wir nutzen die Ergebnisse aus den 7 Fragen, um deine individuelle Strategie zu bauen.",
+      "noSpam": "Kein Spam. Keine Werbung.",
+      "name": "Vor- und Nachname",
+      "namePh": "Max Mustermann",
+      "email": "E-Mail",
+      "emailPh": "max@mustermann.de",
+      "website": "Shop URL / Website",
+      "websitePh": "shop.deinedomain.de",
+      "agree": "Ich habe die <link>Datenschutzerklärung</link> gelesen und stimme zu, dass meine Daten zur Analyse verarbeitet werden.",
+      "agreeError": "Bitte zustimmen.",
+      "submit": "Kostenlose Website sichern",
+      "submitting": "Wird gesendet..."
+    },
+    "errors": {
+      "name": "Vor- und Nachname fehlt.",
+      "email": "E-Mail fehlt.",
+      "emailInvalid": "Gib eine gültige E-Mail ein.",
+      "website": "Website fehlt.",
+      "websiteInvalid": "Gib eine gültige Website ein."
+    },
+    "questions": {
+      "hilfe": "Wobei können wir dir helfen?",
+      "umsatz": "Wie viel Umsatz machst du aktuell pro Monat?",
+      "plattform": "Auf welcher Plattform schaltest du aktuell Werbung?",
+      "kundenproMonat": "Wie viele neue Kunden gewinnst du aktuell pro Monat?",
+      "kundenherkunft": "Wie kommen deine Kunden aktuell zu dir?",
+      "problem": "Was ist aktuell dein größtes Problem?",
+      "ziel": "Was ist aktuell dein wichtigstes Ziel?"
+    },
+    "options": {
+      "hilfe": ["Kostenlose Website + Mehr zahlende Kunden", "Mehr zahlende Kunden"],
+      "umsatz": ["Unter 10.000€", "10.000€ bis 30.000€", "30.000€ bis 100.000€", "100.000€ +"],
+      "plattform": ["Meta", "Google", "TikTok", "Keine Ads"],
+      "kundenproMonat": ["0-5 Kunden", "5-15 Kunden", "15-30 Kunden", "30+ Kunden"],
+      "kundenherkunft": ["Empfehlungen", "Google Ads / Meta Ads", "Social Media", "Kaltakquise"],
+      "problem": ["Zu wenig Anfragen und Neukunden", "Unsicher wie man Werbung schaltet", "Meine Ads bringen kaum Ergebnisse", "Ich verliere Kunden an günstigere Konkurrenten"],
+      "ziel": ["Mehr zahlende Kunden gewinnen", "Endlich planbar und profitabel wachsen", "Nicht mehr auf Empfehlungen angewiesen sein", "Meine Konkurrenz hinter mir lassen"]
+    }
+  },
+  "thankYou": {
+    "danke": "Danke {name}!",
+    "headline": "So geht es jetzt weiter",
+    "steps": {
+      "websiteDone": "Website wird vorbereitet",
+      "termin": "Termin buchen um deine Website anzuschauen",
+      "terminCall": "Kostenloses Online Gespräch buchen",
+      "terminSub": "Buche dir jetzt deinen kostenlosen Online-Termin",
+      "terminSubWebsite": "Buche dir jetzt deinen kostenlosen Online-Termin — wir gehen deine fertige Website-Vorschau gemeinsam durch.",
+      "duration": "Dauer: ca. 30 Minuten",
+      "cost": "Kosten: 0,00 €",
+      "besprechung": "Persönliche Besprechung (Online)",
+      "besprechungBody": "Nach den 30 Minuten weißt du wie du durch BilderAds mehr zahlende Kunden gewinnst. Wir beantworten alle deine Fragen und zeigen dir die nächsten Schritte.",
+      "besprechungPunch": "Einfach gesagt: Nach unserem Gespräch wirst du dich vor neuen Aufträgen nicht mehr retten können."
+    },
+    "noFit": "Termine passen nicht? Schreib uns an",
+    "loading": "Termine werden geladen ..."
+  },
+  "legal": {
+    "back": "← Zurück zur Startseite",
+    "updated": "Zuletzt aktualisiert: {date}"
+  }
+}

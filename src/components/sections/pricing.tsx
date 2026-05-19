@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { BrandButton } from "@/components/ui/brand-button";
 import { cn } from "@/lib/utils";
+import { containerFast, fadeUpLg } from "@/lib/motion";
 
 type Feature = {
   name: string;
@@ -21,99 +23,34 @@ type Tier = {
   highlight: boolean;
 };
 
-const TIERS: Tier[] = [
-  {
-    name: "Gold",
-    scarcity: "Nur noch 3 Plätze frei",
-    pitch: "Jeden Monat mehr Kunden bekommen, ohne einen Finger zu rühren.",
-    price: "3.000 €",
-    unit: "/ Monat",
-    ctaVariant: "primary",
-    highlight: true,
-    features: [
-      {
-        name: "Google Werbung",
-        subItems: [
-          "Google Search Ads",
-          "40 Image Ads für Google",
-        ],
-      },
-      {
-        name: "Website",
-        subItems: [
-          "Design & Tests",
-          "Kontaktformular & Anfragen Optimierung",
-          "Mobile optimiert",
-        ],
-      },
-      {
-        name: "Google Business Profil Optimierung",
-        subItems: [
-          "Vollständige Profil-Optimierung",
-          "Bewertungs-Management",
-          "Lokale Suche im Umkreis",
-        ],
-      },
-      {
-        name: "Wöchentlicher Performance Bericht",
-        subItems: ["Anfragen & Kosten im Überblick"],
-      },
-      {
-        name: "Wöchentliche Update Meetings",
-        subItems: ["30 Minuten Online-Besprechung"],
-      },
-    ],
-  },
-  {
-    name: "Black Diamond",
-    pitch: "Für Dienstleister die mehr Kunden wollen, ohne Risiko einzugehen.",
-    price: "5.000 €",
-    unit: "/ Monat",
-    ctaVariant: "outline",
-    highlight: false,
-    features: [
-      {
-        name: "Google Werbung",
-        subItems: ["Google Search Ads", "20 Image Ads für Google"],
-      },
-      {
-        name: "Website",
-        subItems: [
-          "Design & Tests",
-          "Kontaktformular & Anfragen Optimierung",
-          "Mobile optimiert",
-        ],
-      },
-      {
-        name: "Facebook + Instagram Werbung",
-        subItems: [
-          "Setup der Meta-Werbung",
-          "Erstellung der Werbeanzeigen",
-          "Media-Buying der Werbeanzeigen",
-          "Optimierung der Werbeanzeigen",
-        ],
-      },
-      {
-        name: "Google Business Profil Optimierung",
-        subItems: [
-          "Vollständige Profil-Optimierung",
-          "Bewertungs-Management",
-          "Lokale Suche im Umkreis",
-        ],
-      },
-      {
-        name: "Wöchentlicher Performance Bericht",
-        subItems: ["Anfragen & Kosten im Überblick"],
-      },
-    ],
-  },
-];
-
 export function Pricing() {
+  const t = useTranslations("pricing");
+  const TIERS: Tier[] = [
+    {
+      name: "Gold",
+      scarcity: t("gold.scarcity"),
+      pitch: t("gold.pitch"),
+      price: t("gold.price"),
+      unit: t("gold.unit"),
+      features: t.raw("gold.features") as Feature[],
+      ctaVariant: "primary",
+      highlight: true,
+    },
+    {
+      name: "Black Diamond",
+      pitch: t("blackDiamond.pitch"),
+      price: t("blackDiamond.price"),
+      unit: t("blackDiamond.unit"),
+      features: t.raw("blackDiamond.features") as Feature[],
+      ctaVariant: "outline",
+      highlight: false,
+    },
+  ];
+
   return (
     <section
       id="preise"
-      className="relative w-full overflow-hidden bg-black py-15 tablet:py-20 desktop:py-30"
+      className="relative w-full overflow-hidden bg-black py-12 tablet:py-16 desktop:py-20"
     >
       <div
         aria-hidden
@@ -126,159 +63,158 @@ export function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
-          className="text-center text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]"
+          className="text-center text-[24px] leading-[1.25] tracking-[-0.015em] font-semibold text-white tablet:text-[30px] desktop:text-[38px]"
         >
-          2 Wege, 1 Ziel
+          {t("headlineTop")}
           <br />
-          <span className="text-white/70">Mehr Kunden für dich</span>
+          <span className="text-white/70">{t("headlineBottom")}</span>
         </motion.h2>
 
-        <div className="mt-14 grid grid-cols-1 items-start gap-6 md:mt-16 md:grid-cols-2">
+        <motion.div
+          variants={containerFast}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-10 grid grid-cols-1 items-start gap-5 md:mt-12 md:grid-cols-2"
+        >
           {TIERS.map((tier) => (
-            <TierCard key={tier.name} tier={tier} />
+            <motion.div key={tier.name} variants={fadeUpLg}>
+              <TierCard tier={tier} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
 function TierCard({ tier }: { tier: Tier }) {
+  const t = useTranslations("pricing");
   const [open, setOpen] = useState(false);
 
   return (
-    <div
-      className={cn(
-        "relative flex flex-col rounded-[18px] p-7 md:p-8",
-        tier.highlight
-          ? "border-[1.5px] border-[#7c3aed]/60 bg-[#0e0220] shadow-[0_28px_80px_-32px_rgba(124,58,237,0.55)]"
-          : "border border-white/10 bg-white/[0.02]",
-      )}
-    >
+    <div className="relative pt-5">
       {tier.scarcity ? (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#3a0460] px-3.5 py-1 text-[11px] font-semibold tracking-wide text-[#d6c2ff] ring-1 ring-[#7c3aed]/50">
-          {tier.scarcity}
+        <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2">
+          <span className="relative inline-flex items-center rounded-full border border-[#7c3aed]/60 bg-[#1a0235] px-4 py-1.5 text-[13px] font-medium text-white shadow-[0_8px_30px_-4px_rgba(124,58,237,0.6)]">
+            {tier.scarcity}
+          </span>
         </div>
       ) : null}
 
-      <div className="text-[18px] font-semibold text-white">{tier.name}</div>
-      <p className="mt-2 text-[13px] leading-snug text-white/55">
-        {tier.pitch}
-      </p>
-
-      <div className="mt-7 flex items-baseline gap-2">
-        <span className="text-[40px] font-bold tracking-tight text-[#a78bfa] md:text-[44px]">
-          {tier.price}
-        </span>
-        <span className="text-[13px] text-white/55">{tier.unit}</span>
-      </div>
-
-      <ul className="mt-7 flex flex-col gap-4">
-        {tier.features.map((f) => (
-          <li key={f.name}>
-            <div className="flex items-start gap-3">
-              <CheckPill />
-              <span className="text-[14px] font-semibold text-white">
-                {f.name}
-              </span>
-            </div>
-            <AnimatePresence initial={false}>
-              {open ? (
-                <motion.ul
-                  key={`sub-${f.name}`}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{
-                    height: { duration: 0.32, ease: [0.22, 1, 0.36, 1] },
-                    opacity: { duration: 0.22, ease: "easeOut" },
-                  }}
-                  className="ml-8 overflow-hidden"
-                >
-                  <div className="mt-2 flex flex-col gap-1.5 pb-1">
-                    {f.subItems.map((s) => (
-                      <div
-                        key={s}
-                        className="flex items-start gap-2 text-[13px] leading-snug text-white/65"
-                      >
-                        <span
-                          aria-hidden
-                          className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full bg-white/30"
-                        />
-                        <span>{s}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.ul>
-              ) : null}
-            </AnimatePresence>
-          </li>
-        ))}
-      </ul>
-
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        className="mt-7 inline-flex w-fit items-center gap-2 text-[12.5px] text-white/65 transition-colors hover:text-white"
+      <div
+        className={cn(
+          "relative flex flex-col rounded-[22px] p-6 md:p-7",
+          tier.highlight
+            ? "border-[1.5px] border-[#7c3aed]/45 bg-[#070012] shadow-[0_0_60px_-15px_rgba(124,58,237,0.5)]"
+            : "border border-white/10 bg-white/[0.02]",
+        )}
       >
-        <Chevron open={open} />
-        {open ? "Alle Details ausblenden" : "Alle Details anzeigen"}
-      </button>
+        <div className="text-[22px] font-semibold tracking-tight text-white md:text-[24px]">
+          {tier.name}
+        </div>
+        <p className="mt-2 text-[13.5px] leading-snug text-white/55">
+          {tier.pitch}
+        </p>
 
-      <div className="mt-6">
-        <BrandButton
-          href="#analyse"
-          variant={tier.ctaVariant}
-          size="md"
-          className="w-full"
-        >
-          Jetzt kaufen
-        </BrandButton>
+        <div className="mt-5 flex items-baseline gap-2">
+          <span className="text-[36px] font-bold tracking-tight text-[#a78bfa] md:text-[44px]">
+            {tier.price}
+          </span>
+          <span className="text-[13px] text-white/55">{tier.unit}</span>
+        </div>
+
+        <LayoutGroup>
+          <motion.ul layout className="mt-6 flex flex-col gap-3">
+            {tier.features.map((f) => (
+              <motion.li layout key={f.name}>
+                <motion.div layout="position" className="flex items-start gap-3">
+                  <CheckMark />
+                  <span className="text-[14px] font-bold text-white md:text-[15px]">
+                    {f.name}
+                  </span>
+                </motion.div>
+                <AnimatePresence initial={false}>
+                  {open ? (
+                    <motion.div
+                      key={`sub-${f.name}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{
+                        opacity: { duration: 0.2, ease: "easeOut", delay: open ? 0.08 : 0 },
+                      }}
+                      className="ml-9 overflow-hidden"
+                    >
+                      <motion.ul
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
+                        transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-2 flex flex-col gap-1.5 pb-1">
+                          {f.subItems.map((s) => (
+                            <div
+                              key={s}
+                              className="flex items-start gap-2.5 text-[14px] leading-snug text-white/55"
+                            >
+                              <span
+                                aria-hidden
+                                className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-white/40"
+                              />
+                              <span>{s}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.ul>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </motion.li>
+            ))}
+          </motion.ul>
+
+          <motion.button
+            layout="position"
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            className="mt-5 inline-flex w-fit items-center gap-2 text-[13px] text-white/65 transition-colors hover:text-white"
+          >
+            <span aria-hidden className="text-[15px]">👉</span>
+            {open ? t("details.hide") : t("details.show")}
+          </motion.button>
+
+          <motion.div layout="position" className="mt-5">
+            <BrandButton
+              href="/funnel-start"
+              variant={tier.ctaVariant}
+              size="md"
+              className="w-full"
+            >
+              {t("buyCta")}
+            </BrandButton>
+          </motion.div>
+        </LayoutGroup>
       </div>
     </div>
   );
 }
 
-function CheckPill() {
+function CheckMark() {
   return (
-    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3a0460]/60 ring-1 ring-[#7c3aed]/60">
-      <svg
-        viewBox="0 0 24 24"
-        className="h-3 w-3 text-[#c4b5fd]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polyline points="20 6 9 17 4 12" />
-      </svg>
-    </span>
-  );
-}
-
-function Chevron({ open }: { open: boolean }) {
-  return (
-    <span
+    <svg
+      viewBox="0 0 24 24"
       aria-hidden
-      className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.06] ring-1 ring-white/10"
-      style={{
-        transition: "transform 200ms ease",
-        transform: open ? "rotate(180deg)" : "rotate(0deg)",
-      }}
+      className="mt-1 h-4 w-4 shrink-0 text-[#a78bfa]"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <svg
-        viewBox="0 0 24 24"
-        className="h-3 w-3 text-white/75"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polyline points="6 9 12 15 18 9" />
-      </svg>
-    </span>
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
   );
 }

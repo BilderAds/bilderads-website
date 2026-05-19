@@ -5,16 +5,10 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useTranslations } from "next-intl";
 import { Check, CircleCheckBig } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/utils";
-
-const BENEFITS: string[] = [
-  "Audit deiner aktuellen Website (was hält Kunden ab?)",
-  "Check deiner Google Ads (verbrennst du Geld?)",
-  "3 konkrete Hebel die sofort mehr Anfragen bringen",
-  "Schriftlicher Report per E-Mail",
-];
 
 const BRANCHEN = [
   "Gebäudereinigung",
@@ -50,6 +44,8 @@ type FormValues = z.infer<typeof schema>;
  * success state. Wire to backend later.
  */
 export function LeadMagnet() {
+  const t = useTranslations("leadMagnet");
+  const BENEFITS = t.raw("benefits") as string[];
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -77,11 +73,10 @@ export function LeadMagnet() {
         className="mx-auto max-w-3xl text-center"
       >
         <h2 className="text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]">
-          Lieber erst mal gucken?
+          {t("headline")}
         </h2>
         <p className="mt-5 text-base text-[#a1a1aa] md:text-lg">
-          Wir analysieren deine Website und deine Google Ads. Kostenlos. 0
-          Verpflichtung.
+          {t("subline")}
         </p>
       </motion.div>
 
@@ -94,11 +89,11 @@ export function LeadMagnet() {
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
           <div className="inline-flex items-center rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 px-3.5 py-1.5 text-xs font-medium tracking-wider text-[#c4b5fd] uppercase">
-            Kostenlose Marketing-Analyse
+            {t("kicker")}
           </div>
 
           <h3 className="mt-6 text-2xl font-semibold tracking-tight text-white md:text-3xl">
-            Du bekommst:
+            {t("youGet")}
           </h3>
 
           <ul className="mt-6 space-y-3.5">
@@ -117,9 +112,9 @@ export function LeadMagnet() {
           </ul>
 
           <div className="mt-8 grid grid-cols-3 gap-3 md:gap-4">
-            <Tile label="Dauer" value="48h" />
-            <Tile label="Kosten" value="0 €" />
-            <Tile label="Verkaufsdruck" value="0" />
+            <Tile label={t("tiles.duration")} value={t("tiles.durationValue")} />
+            <Tile label={t("tiles.cost")} value={t("tiles.costValue")} />
+            <Tile label={t("tiles.pressure")} value={t("tiles.pressureValue")} />
           </div>
         </motion.div>
 
@@ -140,12 +135,12 @@ export function LeadMagnet() {
               noValidate
             >
               <Field
-                label="Firmenname"
+                label={t("form.company")}
                 error={errors.firma?.message}
                 input={
                   <input
                     type="text"
-                    placeholder="Mustermann GmbH"
+                    placeholder={t("form.companyPh")}
                     autoComplete="organization"
                     {...register("firma")}
                     className={inputClass(!!errors.firma)}
@@ -154,12 +149,12 @@ export function LeadMagnet() {
               />
 
               <Field
-                label="Website"
+                label={t("form.website")}
                 error={errors.website?.message}
                 input={
                   <input
                     type="url"
-                    placeholder="https://deine-firma.de"
+                    placeholder={t("form.websitePh")}
                     autoComplete="url"
                     {...register("website")}
                     className={inputClass(!!errors.website)}
@@ -168,12 +163,12 @@ export function LeadMagnet() {
               />
 
               <Field
-                label="E-Mail"
+                label={t("form.email")}
                 error={errors.email?.message}
                 input={
                   <input
                     type="email"
-                    placeholder="du@deine-firma.de"
+                    placeholder={t("form.emailPh")}
                     autoComplete="email"
                     {...register("email")}
                     className={inputClass(!!errors.email)}
@@ -182,7 +177,7 @@ export function LeadMagnet() {
               />
 
               <Field
-                label="Branche"
+                label={t("form.branche")}
                 error={errors.branche?.message}
                 input={
                   <select
@@ -198,7 +193,7 @@ export function LeadMagnet() {
                     }}
                   >
                     <option value="" disabled>
-                      Bitte wählen
+                      {t("form.branchePlease")}
                     </option>
                     {BRANCHEN.map((b) => (
                       <option key={b} value={b} className="bg-[#0a0a0a]">
@@ -214,11 +209,11 @@ export function LeadMagnet() {
                 disabled={isSubmitting}
                 className="mt-2 inline-flex w-full items-center justify-center rounded-[11px] bg-[#3a0460] px-5 py-3.5 text-[14px] font-semibold tracking-tight text-white shadow-[0_8px_24px_-10px_rgba(58,4,96,0.9)] transition-all duration-200 hover:bg-[#52097f] hover:shadow-[0_12px_28px_-10px_rgba(82,9,127,0.95)] active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? "Wird gesendet..." : "Analyse anfordern"}
+                {isSubmitting ? t("form.submitting") : t("form.submit")}
               </button>
 
               <p className="text-center text-xs text-[#71717a]">
-                Antwort innerhalb von 48h. Keine Newsletter, kein Spam.
+                {t("form.disclaimer")}
               </p>
             </form>
           )}
@@ -274,6 +269,7 @@ function Tile({ label, value }: { label: string; value: string }) {
 }
 
 function SuccessState() {
+  const t = useTranslations("leadMagnet.success");
   return (
     <div className="flex flex-col items-center justify-center py-6 text-center md:py-10">
       <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-500/15 ring-1 ring-green-500/30">
@@ -283,11 +279,10 @@ function SuccessState() {
         />
       </div>
       <h3 className="mt-5 text-2xl font-semibold tracking-tight text-white">
-        Danke!
+        {t("title")}
       </h3>
       <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-[#a1a1aa] md:text-base">
-        Wir melden uns innerhalb von 48h bei dir mit deiner persönlichen
-        Marketing-Analyse.
+        {t("body")}
       </p>
     </div>
   );

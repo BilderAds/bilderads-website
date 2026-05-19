@@ -3,78 +3,70 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { BrandButton } from "@/components/ui/brand-button";
+
+type LightboxState = {
+  src: string;
+  alt: string;
+} | null;
 
 type Plan = "Gold" | "Black Diamond";
 
 type CaseEntry = {
-  branche: string;
-  umsatz: string;
-  zeitraum: string;
-  detail?: string;
+  itemKey: "abfluss" | "gebaeude" | "schmuck" | "uhren" | "supplements";
   roas: string;
-  service: string;
   plan: Plan;
   image: string;
+  siteUrl?: string;
 };
 
 const CASES: CaseEntry[] = [
   {
-    branche: "Abflussreinigung",
-    umsatz: "1.800.000 €",
-    zeitraum: "Umsatz",
-    detail: "262.000 € investiert",
+    itemKey: "abfluss",
     roas: "6,9x ROAS",
-    service: "Dienstleistung",
     plan: "Gold",
     image: "/testimonials/google-ads-abflussreinigung-1-8mio-umsatz.webp",
+    siteUrl: "https://schnellerabfluss.de/",
   },
   {
-    branche: "Gebäudereinigung",
-    umsatz: "295.598 €",
-    zeitraum: "in 3 Jahren",
+    itemKey: "gebaeude",
     roas: "5,2x ROAS",
-    service: "Dienstleistung",
     plan: "Gold",
     image: "/testimonials/google-ads-gebaeudereinigung-koeln-295k-umsatz.webp",
   },
   {
-    branche: "Schmuck",
-    umsatz: "407.758 €",
-    zeitraum: "in 10 Monaten",
+    itemKey: "schmuck",
     roas: "8,8x ROAS",
-    service: "Google Ads",
     plan: "Black Diamond",
     image: "/testimonials/google-ads-schmuck-shop-407k-umsatz.webp",
+    siteUrl: "https://kolure.de/",
   },
   {
-    branche: "Uhren",
-    umsatz: "123.088 €",
-    zeitraum: "in 3 Monaten",
+    itemKey: "uhren",
     roas: "9,2x ROAS",
-    service: "Google Ads",
     plan: "Black Diamond",
     image: "/testimonials/google-ads-uhren-shop-123k-umsatz.webp",
   },
   {
-    branche: "Supplements",
-    umsatz: "140.809 €",
-    zeitraum: "11,71 € pro Kunde",
+    itemKey: "supplements",
     roas: "3,2x ROAS",
-    service: "Google Ads",
     plan: "Black Diamond",
     image: "/testimonials/google-ads-supplement-shop-140k-umsatz.webp",
+    siteUrl: "https://mindabolics.com/",
   },
 ];
 
-const NICHE_SETS: string[][] = [
-  ["Malerbetrieb", "Elektriker", "Glaserei", "Entrümpelung"],
-  ["Gebäudereinigung", "Sanitär", "Schlüsseldienst", "Ungezieferbekämpfung"],
-  ["Dachdecker", "Heizungsbau", "Fliesenleger", "Garten & Landschaft"],
-  ["Tischler", "Bodenleger", "Maurer", "Trockenbau"],
-];
-
 export function Cases() {
+  const t = useTranslations("cases");
+  const NICHE_SETS = [
+    t.raw("niches.set1") as string[],
+    t.raw("niches.set2") as string[],
+    t.raw("niches.set3") as string[],
+    t.raw("niches.set4") as string[],
+  ];
+  const [lightbox, setLightbox] = useState<LightboxState>(null);
+
   return (
     <section
       id="ergebnisse"
@@ -94,16 +86,14 @@ export function Cases() {
           className="mx-auto max-w-3xl text-center"
         >
           <h2 className="text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]">
-            2.300.000 €+ Umsatz
+            {t("headlineTop")}
             <br />
-            <span className="text-white/70">
-              für Lokale Dienstleister wie dich
-            </span>
+            <span className="text-white/70">{t("headlineBottom")}</span>
           </h2>
 
         </motion.div>
 
-        <NicheRow />
+        <NicheRow sets={NICHE_SETS} />
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {CASES.map((entry, i) => (
@@ -114,32 +104,93 @@ export function Cases() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.07 }}
             >
-              <CaseCard entry={entry} />
+              <CaseCard entry={entry} onImageClick={() => setLightbox({ src: entry.image, alt: `Google Ads Dashboard ${t(`items.${entry.itemKey}.branche`)} ${t(`items.${entry.itemKey}.umsatz`)}` })} />
             </motion.div>
           ))}
         </div>
 
         <div className="mt-12 flex justify-center">
-          <BrandButton href="#analyse" size="md">
-            Jetzt mehr Kunden bekommen
+          <BrandButton href="/funnel-start" size="md">
+            {t("cta")}
           </BrandButton>
         </div>
       </div>
+
+      <Lightbox state={lightbox} onClose={() => setLightbox(null)} />
     </section>
   );
 }
 
-function NicheRow() {
+function Lightbox({ state, onClose }: { state: LightboxState; onClose: () => void }) {
+  useEffect(() => {
+    if (!state) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [state, onClose]);
+
+  return (
+    <AnimatePresence>
+      {state ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          role="dialog"
+          aria-modal="true"
+          onClick={onClose}
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 p-4 backdrop-blur tablet:p-8"
+        >
+          <motion.div
+            initial={{ scale: 0.96, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.96, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-white/10"
+          >
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Schließen"
+              className="absolute top-3 right-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white ring-1 ring-white/15 backdrop-blur transition-colors hover:bg-black/90"
+            >
+              ×
+            </button>
+            <Image
+              src={state.src}
+              alt={state.alt}
+              width={1800}
+              height={950}
+              className="block h-auto w-full"
+              sizes="100vw"
+              priority
+            />
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}
+
+function NicheRow({ sets }: { sets: string[][] }) {
   const [setIdx, setSetIdx] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setSetIdx((n) => (n + 1) % NICHE_SETS.length);
+      setSetIdx((n) => (n + 1) % sets.length);
     }, 2400);
     return () => clearInterval(id);
-  }, []);
+  }, [sets.length]);
 
-  const niches = NICHE_SETS[setIdx];
+  const niches = sets[setIdx];
 
   return (
     <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-3 tablet:mt-12 tablet:grid-cols-4 tablet:gap-x-6 desktop:mt-14 desktop:gap-x-10">
@@ -170,65 +221,111 @@ function NicheRow() {
   );
 }
 
-function CaseCard({ entry }: { entry: CaseEntry }) {
+function CaseCard({ entry, onImageClick }: { entry: CaseEntry; onImageClick: () => void }) {
+  const t = useTranslations("cases");
+  const branche = t(`items.${entry.itemKey}.branche`);
+  const umsatz = t(`items.${entry.itemKey}.umsatz`);
+  const umsatzSuffix = t(`items.${entry.itemKey}.zeitraum`);
+  const detail = t.has(`items.${entry.itemKey}.detail`)
+    ? t(`items.${entry.itemKey}.detail`)
+    : null;
+  const service = t(`items.${entry.itemKey}.service`);
+
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-[18px] border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.04] hover:shadow-[0_24px_70px_-22px_rgba(124,58,237,0.45)]">
-      {/* Headline */}
-      <div className="flex items-baseline gap-2">
-        <div className="text-[26px] font-bold tracking-tight text-white md:text-[30px]">
-          {entry.umsatz}
-        </div>
-        <span className="text-[13px] text-[#a78bfa]">Umsatz →</span>
-      </div>
-      <div className="mt-1 text-[12.5px] text-white/55">
-        {entry.detail ?? entry.zeitraum}
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.015] p-6 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.035] hover:shadow-[0_24px_70px_-22px_rgba(124,58,237,0.45)] md:p-7">
+      {/* Headline: "Über X € Umsatz →" */}
+      <h3 className="text-[22px] leading-[1.2] font-bold tracking-tight text-white md:text-[24px]">
+        {t("umsatzPrefix")} {umsatz} {t("umsatzSuffix")}{" "}
+        <span aria-hidden className="text-white/60">→</span>
+      </h3>
+      {/* Sub-headline larger + muted */}
+      <div className="mt-1.5 text-[17px] font-semibold leading-tight text-white/40 md:text-[18px]">
+        {detail ?? umsatzSuffix}
       </div>
 
-      {/* Real Google Ads dashboard screenshot */}
-      <div className="mt-4 overflow-hidden rounded-xl bg-white ring-1 ring-white/10">
+      {/* Real Google Ads dashboard screenshot — clickable */}
+      <button
+        type="button"
+        onClick={onImageClick}
+        aria-label={`Google Ads Dashboard ${branche}`}
+        className="group/img relative mt-5 block overflow-hidden rounded-xl bg-white ring-1 ring-white/10 transition-transform duration-300 hover:ring-[#7c3aed]/40"
+      >
         <Image
           src={entry.image}
-          alt={`Google Ads Dashboard ${entry.branche} ${entry.umsatz}`}
+          alt={`Google Ads Dashboard ${branche} ${umsatz}`}
           width={1200}
           height={620}
-          className="block h-auto w-full"
+          className="block h-auto w-full transition-transform duration-500 group-hover/img:scale-[1.02]"
           sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 380px"
         />
-      </div>
+        <span
+          aria-hidden
+          className="pointer-events-none absolute right-2.5 bottom-2.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-black/70 text-white opacity-0 ring-1 ring-white/15 backdrop-blur transition-opacity group-hover/img:opacity-100"
+        >
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 3h6v6" />
+            <path d="M9 21H3v-6" />
+            <path d="M21 3l-7 7" />
+            <path d="M3 21l7-7" />
+          </svg>
+        </span>
+      </button>
 
-      {/* Stats */}
-      <div className="mt-4 flex items-center gap-2">
+      {/* Stats pills: ROAS left · (optional) Domain center · Service right */}
+      <div className="mt-4 flex items-center justify-between gap-2">
         <Pill>{entry.roas}</Pill>
-        <Pill>{entry.service}</Pill>
+        {entry.siteUrl ? <SitePill url={entry.siteUrl} /> : null}
+        <Pill>{service}</Pill>
       </div>
 
-      {/* Plan */}
-      <div className="mt-4">
+      {/* Plan full-width, clickable → pricing */}
+      <a href="#preise" className="mt-3 block">
         <PlanTag plan={entry.plan} />
-      </div>
+      </a>
     </div>
   );
 }
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-white/[0.05] px-3 py-1 text-[11px] font-medium text-white/75 ring-1 ring-white/10">
+    <span className="inline-flex items-center rounded-full border border-white/15 bg-transparent px-4 py-2 text-[13px] font-medium text-white/85">
       {children}
     </span>
   );
 }
 
-function PlanTag({ plan }: { plan: Plan }) {
-  if (plan === "Black Diamond") {
-    return (
-      <span className="inline-flex w-full items-center justify-center rounded-[11px] border border-white/10 bg-gradient-to-r from-[#3a0460] via-[#7c3aed] to-[#3a0460] px-4 py-2.5 text-[12px] font-semibold tracking-wide text-white shadow-[0_4px_20px_-6px_rgba(124,58,237,0.6)]">
-        Plan 3: Black Diamond
-      </span>
-    );
-  }
+function SitePill({ url }: { url: string }) {
+  const domain = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
   return (
-    <span className="inline-flex w-full items-center justify-center rounded-[11px] border border-[#7c3aed]/40 bg-[#3a0460]/40 px-4 py-2.5 text-[12px] font-semibold tracking-wide text-[#d6c2ff]">
-      Plan 1: Gold
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group inline-flex items-center gap-1 text-[10px] font-medium text-white transition-colors hover:text-white/70"
+    >
+      {domain}
+      <svg
+        viewBox="0 0 16 16"
+        className="h-3 w-3 transition-transform group-hover:translate-x-[1px] group-hover:-translate-y-[1px]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+      >
+        <path d="M5 11L11 5M11 5H6M11 5V10" />
+      </svg>
+    </a>
+  );
+}
+
+function PlanTag({ plan }: { plan: Plan }) {
+  const t = useTranslations("cases.plans");
+  const label = plan === "Black Diamond" ? t("blackDiamond") : t("gold");
+  return (
+    <span className="inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-transparent px-5 py-3 text-[14px] font-medium tracking-tight text-white transition-all duration-200 hover:border-white/30 hover:bg-white/[0.04]">
+      {label}
     </span>
   );
 }

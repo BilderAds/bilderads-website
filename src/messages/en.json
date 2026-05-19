@@ -1,0 +1,467 @@
+{
+  "metadata": {
+    "title": "BilderAds — More paying customers for local service businesses",
+    "description": "Google Ads, website and creatives for local service businesses. More leads, every week. €3,700,000+ generated for clients.",
+    "keywords": [
+      "Google Ads for contractors",
+      "performance marketing agency",
+      "Google Ads agency",
+      "website for service business",
+      "local marketing",
+      "painter marketing",
+      "plumber marketing",
+      "glazier marketing",
+      "locksmith marketing",
+      "more local customers",
+      "lead generation contractors"
+    ]
+  },
+  "header": {
+    "nav": {
+      "ergebnisse": "Results",
+      "bilderads": "BilderAds",
+      "websites": "Websites",
+      "analyse": "Free analysis",
+      "bewertungen": "Reviews",
+      "preise": "Pricing",
+      "faq": "FAQ"
+    },
+    "cta": "Get more customers",
+    "localeSwitch": {
+      "de": "DE",
+      "en": "EN",
+      "label": "Change language"
+    }
+  },
+  "hero": {
+    "pill": "€3,700,000+ generated for clients",
+    "headline": "More paying customers\nfor your business.",
+    "subline": "New leads every week.\nGoogle Ads, websites and creatives for local service businesses.",
+    "cta": "Get more customers now",
+    "steps": {
+      "1": "Click the button",
+      "2": "Answer 7 questions",
+      "3": "Free strategy call"
+    },
+    "video": {
+      "label": "Showreel · 1 min",
+      "placeholder": "Placeholder",
+      "captionTitle": "How you get more customers every week",
+      "captionSub": "Kevin explains in 1 minute how it works"
+    }
+  },
+  "cases": {
+    "headlineTop": "€2,300,000+ in revenue",
+    "headlineBottom": "for service businesses like yours",
+    "umsatzPrefix": "Over",
+    "umsatzSuffix": "in revenue",
+    "cta": "Get more customers now",
+    "items": {
+      "abfluss": {
+        "branche": "Drain cleaning",
+        "umsatz": "€1,800,000",
+        "zeitraum": "in revenue",
+        "detail": "€262,000 ad spend",
+        "service": "Service"
+      },
+      "gebaeude": {
+        "branche": "Cleaning company",
+        "umsatz": "€295,598",
+        "zeitraum": "in 3 years",
+        "service": "Service"
+      },
+      "schmuck": {
+        "branche": "Jewelry",
+        "umsatz": "€407,758",
+        "zeitraum": "in 10 months",
+        "service": "Google Ads"
+      },
+      "uhren": {
+        "branche": "Watches",
+        "umsatz": "€123,088",
+        "zeitraum": "in 3 months",
+        "service": "Google Ads"
+      },
+      "supplements": {
+        "branche": "Supplements",
+        "umsatz": "€140,809",
+        "zeitraum": "€11.71 per customer",
+        "service": "Google Ads"
+      }
+    },
+    "niches": {
+      "set1": ["Painter", "Electrician", "Glazier", "Junk removal"],
+      "set2": ["Cleaning", "Plumber", "Locksmith", "Pest control"],
+      "set3": ["Roofer", "HVAC", "Tiler", "Gardener"],
+      "set4": ["Carpenter", "Floor layer", "Mason", "Drywall"]
+    },
+    "plans": {
+      "gold": "Plan 1: Gold",
+      "blackDiamond": "Plan 3: Black Diamond"
+    }
+  },
+  "pain": {
+    "headline": "Every business owner hates this:",
+    "rowTop": [
+      "Up and down bookings",
+      "Ads burn cash",
+      "Not enough staff",
+      "Website too expensive"
+    ],
+    "rowBottom": [
+      "Find customers yourself",
+      "Bad jobs only",
+      "Not #1 on Google",
+      "Low profit per job"
+    ]
+  },
+  "solution": {
+    "kicker": "BilderAds benefits",
+    "headline": "You will love this:",
+    "benefits": [
+      {
+        "number": "01",
+        "title": "More paying customers",
+        "description": "New leads every week through Google Ads."
+      },
+      {
+        "number": "02",
+        "title": "#1 on Google",
+        "description": "Top of Google right away with strong Google Ads and a landing page."
+      },
+      {
+        "number": "03",
+        "title": "Better jobs",
+        "description": "Jobs that pay. More margin, less back and forth."
+      }
+    ]
+  },
+  "process": {
+    "kicker": "How it works",
+    "headline": "3 steps to more customers",
+    "cta": "Get more customers now",
+    "steps": [
+      {
+        "n": "01",
+        "title": "First call",
+        "body": "We look together at how we can bring you more paying customers."
+      },
+      {
+        "n": "02",
+        "title": "We set everything up for you",
+        "body": "Website, Google Ads, Google Business Profile, reporting."
+      },
+      {
+        "n": "03",
+        "title": "Paying customers call you",
+        "body": "New paying customers every week. You decide who you want to work with."
+      }
+    ]
+  },
+  "showcase": {
+    "headline": "Your new website turns visitors into customers",
+    "scarcity": "Only 3 spots left",
+    "offerTitle": "Free website",
+    "offerSub": "Grab the Gold bundle now and get a professional website worth €3,000 free on top.",
+    "cta": "Get more customers now",
+    "branchen": {
+      "haus": "Beauty studio",
+      "kita": "Daycare",
+      "ablass": "Cleaning company",
+      "ecomet": "Online shop",
+      "zahn": "Dental practice"
+    },
+    "liveLabel": "View live"
+  },
+  "reviews": {
+    "headline": "How our clients work with us",
+    "subline": "Real words from business owners who get new customers with BilderAds and make their business steady.",
+    "cta": "Get more customers now",
+    "items": [
+      {
+        "text": "Very structured team, fast answers when I have questions. Clear recommendation from me.",
+        "name": "Philipp",
+        "plan": "Gold"
+      },
+      {
+        "text": "Before we worked almost only with videos. The new images grew our revenue by €53,000 in the first month.",
+        "name": "Tobias",
+        "plan": "Black Diamond"
+      },
+      {
+        "text": "What sold us was the structure and the clear system. Everything is easy to follow and well planned.",
+        "name": "Leonard",
+        "plan": "Black Diamond"
+      },
+      {
+        "text": "We thought a new product would save us. But it was the marketing. After three months we were fully booked.",
+        "name": "Daniel",
+        "plan": "Gold"
+      },
+      {
+        "text": "Honestly I was unsure if images still work today. But my doubt was gone fast.",
+        "name": "Keanu",
+        "plan": "Gold"
+      },
+      {
+        "text": "Before BilderAds we just tested a lot. Now we know after every test why something works or not.",
+        "name": "Leon",
+        "plan": "Gold"
+      },
+      {
+        "text": "Clear words, no boring theory. Just do it and see results. That is how it should be.",
+        "name": "Sarah",
+        "plan": "Black Diamond"
+      },
+      {
+        "text": "Best money we ever spent. New requests every week and I do not have to do anything myself.",
+        "name": "Max M.",
+        "plan": "Gold"
+      }
+    ]
+  },
+  "pricing": {
+    "headlineTop": "2 ways, 1 goal",
+    "headlineBottom": "More customers for you",
+    "details": {
+      "show": "Show all details",
+      "hide": "Hide all details"
+    },
+    "buyCta": "Buy now",
+    "gold": {
+      "name": "Gold",
+      "scarcity": "Only 3 spots left",
+      "pitch": "Get more customers every month, without lifting a finger.",
+      "price": "€3,000",
+      "unit": "/ month",
+      "features": [
+        {
+          "name": "Google Ads",
+          "subItems": ["Google Search Ads", "40 image ads for Google"]
+        },
+        {
+          "name": "Website",
+          "subItems": ["Design and copy", "Contact form and lead optimization", "Mobile optimized"]
+        },
+        {
+          "name": "Google Business Profile setup",
+          "subItems": ["Full profile setup", "Review strategy", "Local visibility"]
+        },
+        {
+          "name": "Weekly performance report",
+          "subItems": ["Leads and costs at a glance"]
+        },
+        {
+          "name": "Weekly update meeting",
+          "subItems": ["30 minute online call"]
+        }
+      ]
+    },
+    "blackDiamond": {
+      "name": "Black Diamond",
+      "pitch": "For service businesses that want more customers without taking risk.",
+      "price": "€5,000",
+      "unit": "/ month",
+      "features": [
+        {
+          "name": "Google Ads",
+          "subItems": ["Google Search Ads", "20 image ads for Google"]
+        },
+        {
+          "name": "Website",
+          "subItems": ["Design and copy", "Contact form and lead optimization", "Mobile optimized"]
+        },
+        {
+          "name": "Facebook + Instagram ads",
+          "subItems": ["Meta ads setup", "Ad creation", "Media buying", "Ad optimization"]
+        },
+        {
+          "name": "Google Business Profile setup",
+          "subItems": ["Full profile optimization", "Review management", "Local map ranking"]
+        },
+        {
+          "name": "Weekly performance report",
+          "subItems": ["Leads and costs at a glance"]
+        }
+      ]
+    }
+  },
+  "leadMagnet": {
+    "headline": "Want to look first?",
+    "subline": "We check your website and your Google Ads. Free. Zero commitment.",
+    "kicker": "Free marketing analysis",
+    "youGet": "You get:",
+    "benefits": [
+      "Audit of your current website (what stops customers?)",
+      "Check of your Google Ads (are you burning money?)",
+      "3 clear ways to get more leads right away",
+      "Written report by email"
+    ],
+    "tiles": {
+      "duration": "Time",
+      "durationValue": "48h",
+      "cost": "Cost",
+      "costValue": "€0",
+      "pressure": "Sales pressure",
+      "pressureValue": "0"
+    },
+    "form": {
+      "company": "Company name",
+      "companyPh": "Acme Inc.",
+      "website": "Website",
+      "websitePh": "https://your-company.com",
+      "email": "Email",
+      "emailPh": "you@your-company.com",
+      "branche": "Industry",
+      "branchePlease": "Please choose",
+      "submit": "Request analysis",
+      "submitting": "Sending...",
+      "disclaimer": "Answer within 48h. No newsletter, no spam."
+    },
+    "success": {
+      "title": "Thank you!",
+      "body": "We will get back to you within 48h with your marketing analysis."
+    }
+  },
+  "faq": {
+    "headlineTop": "Questions and answers",
+    "headlineBottom": "about BilderAds",
+    "cta": "Get more customers now",
+    "items": [
+      {
+        "q": "Does this work for my business too?",
+        "a": "If you are a local service business (painter, electrician, plumber, cleaner, glazier, junk removal, locksmith, roofer) yes. We check this in the first call in 5 minutes."
+      },
+      {
+        "q": "Who is BilderAds for?",
+        "a": "Owners of local service businesses who want more paying customers without doing the marketing themselves. You just need to handle the jobs."
+      },
+      {
+        "q": "Do you only make creatives or also strategy?",
+        "a": "Both. Ads, website, Google Business Profile, audiences, budget, reporting. Full performance setup, not only pretty images."
+      },
+      {
+        "q": "Do you also run the ads (media buying)?",
+        "a": "Yes. Google Ads, optional Facebook and Instagram (Black Diamond). You do not need to click anything yourself."
+      },
+      {
+        "q": "How does the work happen?",
+        "a": "1. First call · 2. Onboarding call (60 min) · 3. We build ads and website · 4. Ads go live · 5. Weekly performance report. You just need to show up."
+      },
+      {
+        "q": "Do I have to do a call?",
+        "a": "Yes, a short one. 30 minutes. We see if we fit. No sales pressure, no slides."
+      },
+      {
+        "q": "What does BilderAds cost?",
+        "a": "Gold €3,000 per month, Black Diamond €5,000 per month. Plus your Google Ads budget (paid directly to Google). 3 month minimum, then monthly."
+      },
+      {
+        "q": "Do you work with everyone?",
+        "a": "No. Right now we only take local service businesses, and only if we believe we can deliver results. Not every niche, not every city."
+      },
+      {
+        "q": "What is the meaning of life?",
+        "a": "More paying customers for your business. Try the button below."
+      }
+    ]
+  },
+  "footerCta": {
+    "headline": "Ready for new customers?",
+    "subline": "30 minute call. No sales pressure. If we do not fit, we tell you.",
+    "cta": "Book a call now",
+    "writeUs": "Want to write instead?",
+    "whatsapp": "WhatsApp +49 [Number]",
+    "footnote": "If we are not the right partner, we tell you in the call. And show you who fits better."
+  },
+  "footer": {
+    "tagline": "Performance marketing for local service businesses.",
+    "columns": {
+      "quickLinks": "Quick links",
+      "legal": "Legal",
+      "contact": "Contact"
+    },
+    "links": {
+      "ergebnisse": "Results",
+      "preise": "Pricing",
+      "faq": "FAQ",
+      "kontakt": "Contact",
+      "impressum": "Imprint",
+      "datenschutz": "Privacy policy"
+    },
+    "phone": "+49 [Number]",
+    "copy": "© 2026 BilderAds. All rights reserved."
+  },
+  "funnel": {
+    "scarcity": "Only 1 spot left",
+    "kicker": "In 1 minute to more paying customers",
+    "lastStep": "Last step",
+    "stepOf": "Step {current} of {total}",
+    "back": "Back",
+    "next": "Next",
+    "multiHint": "Multiple choice possible",
+    "trust": "100% free and safe",
+    "contact": {
+      "title": "Your custom analysis\nis being prepared.",
+      "sub": "We use the results from the 7 questions to build your custom strategy.",
+      "noSpam": "No spam. No ads.",
+      "name": "First and last name",
+      "namePh": "John Smith",
+      "email": "Email",
+      "emailPh": "john@example.com",
+      "website": "Shop URL / Website",
+      "websitePh": "shop.your-domain.com",
+      "agree": "I have read the <link>privacy policy</link> and agree that my data can be used for the analysis.",
+      "agreeError": "Please agree.",
+      "submit": "Get my free website",
+      "submitting": "Sending..."
+    },
+    "errors": {
+      "name": "First and last name missing.",
+      "email": "Email missing.",
+      "emailInvalid": "Please enter a valid email.",
+      "website": "Website missing.",
+      "websiteInvalid": "Please enter a valid website."
+    },
+    "questions": {
+      "hilfe": "What can we help you with?",
+      "umsatz": "How much revenue do you make per month right now?",
+      "plattform": "On which platform are you running ads right now?",
+      "kundenproMonat": "How many new customers do you get per month right now?",
+      "kundenherkunft": "How do your customers find you right now?",
+      "problem": "What is your biggest problem right now?",
+      "ziel": "What is your most important goal right now?"
+    },
+    "options": {
+      "hilfe": ["Free website + more paying customers", "More paying customers"],
+      "umsatz": ["Under €10,000", "€10,000 to €30,000", "€30,000 to €100,000", "€100,000+"],
+      "plattform": ["Meta", "Google", "TikTok", "No ads yet"],
+      "kundenproMonat": ["0-5 customers", "5-15 customers", "15-30 customers", "30+ customers"],
+      "kundenherkunft": ["Referrals", "Google Ads / Meta Ads", "Social Media", "Cold outreach"],
+      "problem": ["Not enough leads and new customers", "Not sure how to run ads", "My ads barely bring results", "I lose customers to cheaper competitors"],
+      "ziel": ["Win more paying customers", "Grow steady and profitable", "Stop relying on referrals", "Beat my competition"]
+    }
+  },
+  "thankYou": {
+    "danke": "Thank you {name}!",
+    "headline": "Here is what happens next",
+    "steps": {
+      "websiteDone": "Website is being prepared",
+      "termin": "Book a meeting to see your website",
+      "terminCall": "Book your free online call",
+      "terminSub": "Book your free online call now",
+      "terminSubWebsite": "Book your free online call now. We will go through your finished website preview together.",
+      "duration": "Time: about 30 minutes",
+      "cost": "Cost: €0.00",
+      "besprechung": "Personal call (Online)",
+      "besprechungBody": "After 30 minutes you will know how BilderAds brings you more paying customers. We answer all your questions and show you the next steps.",
+      "besprechungPunch": "Simple as that: after our call you will not be able to keep up with all the new jobs."
+    },
+    "noFit": "Times do not work? Email us at",
+    "loading": "Loading times..."
+  },
+  "legal": {
+    "back": "← Back to home",
+    "updated": "Last updated: {date}"
+  }
+}

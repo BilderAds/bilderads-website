@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import type { MotionValue } from "framer-motion";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { BrandButton } from "@/components/ui/brand-button";
 
 type Step = {
@@ -11,25 +12,10 @@ type Step = {
   body: string;
 };
 
-const STEPS: Step[] = [
-  {
-    n: "01",
-    title: "Erstgespräch.",
-    body: "30 Min am Telefon. Du erzählst was du machst, wir checken ob's passt.",
-  },
-  {
-    n: "02",
-    title: "Wir bauen alles auf.",
-    body: "Google Ads, Landing Page, Anzeigen, Reporting. Du musst nichts tun außer dabei sein.",
-  },
-  {
-    n: "03",
-    title: "Neue Kunden rufen an.",
-    body: "Anfragen jede Woche. Du nimmst nur die guten, die schlechten lehnst du ab.",
-  },
-];
 
 export function Process() {
+  const t = useTranslations("process");
+  const STEPS = t.raw("steps") as Step[];
   // One scroll-progress for the entire 3-step block,
   // split into 3 segments — card N only fills inside its own segment.
   const stepsRef = useRef<HTMLDivElement | null>(null);
@@ -49,11 +35,8 @@ export function Process() {
           className="text-center"
         >
           <h2 className="whitespace-nowrap text-[22px] leading-[1.2] tracking-[-0.015em] font-semibold text-white tablet:text-[32px] tablet:tracking-[-0.02em] desktop:text-[44px] desktop:tracking-[-0.025em]">
-            In 3 Schritten zu mehr Kunden.
+            {t("headline")}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-[15px] text-white/55">
-            Vom ersten Anruf bis zur ersten Anfrage in 14 Tagen.
-          </p>
         </motion.div>
 
         <div
@@ -83,8 +66,8 @@ export function Process() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <BrandButton href="#analyse" size="md">
-            Jetzt mehr Kunden bekommen
+          <BrandButton href="/funnel-start" size="md">
+            {t("cta")}
           </BrandButton>
         </div>
       </div>
