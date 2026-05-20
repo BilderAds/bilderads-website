@@ -45,7 +45,7 @@ export function Reviews() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-white/65 tablet:text-[16px]"
+            className="mx-auto mt-4 max-w-xl text-[13px] leading-relaxed text-white/65 tablet:text-[16px]"
           >
             {t("subline")}
           </motion.p>

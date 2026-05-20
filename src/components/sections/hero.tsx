@@ -121,14 +121,14 @@ export function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="mt-6 text-[32px] leading-[1.15] tracking-[-0.015em] font-bold text-balance whitespace-pre-line text-white tablet:text-[42px] tablet:leading-[1.12] tablet:tracking-[-0.02em] desktop:text-[56px] desktop:leading-[1.08] desktop:tracking-[-0.025em]"
+            className="mt-6 text-[28px] leading-[1.18] tracking-[-0.015em] font-bold whitespace-pre-line text-white tablet:text-[42px] tablet:leading-[1.12] tablet:tracking-[-0.02em] desktop:text-[56px] desktop:leading-[1.08] desktop:tracking-[-0.025em]"
           >
             {t("headline")}
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            className="mt-6 max-w-xl whitespace-pre-line text-[16px] leading-[1.65] text-white/65 tablet:text-[17px] tablet:leading-[1.7] desktop:text-[18px]"
+            className="mt-6 max-w-xl whitespace-normal text-[14px] leading-[1.6] text-white/65 tablet:whitespace-pre-line tablet:text-[17px] tablet:leading-[1.7] desktop:text-[18px]"
           >
             {t("subline")}
           </motion.p>
@@ -140,7 +140,7 @@ export function Hero() {
               </BrandButton>
             </motion.div>
 
-            <ol className="flex flex-wrap items-center gap-x-7 gap-y-3 text-[13px] text-white/70 tablet:text-[14px]">
+            <ol className="flex flex-col items-start gap-3 text-[14px] text-white/70 tablet:flex-row tablet:flex-wrap tablet:items-center tablet:gap-x-7 tablet:gap-y-3">
               <motion.li variants={fadeUp} className="inline-flex items-center gap-2.5">
                 <StepDot n={1} />
                 <span className="font-medium">{t("steps.1")}</span>

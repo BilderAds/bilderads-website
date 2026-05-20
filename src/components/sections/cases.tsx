@@ -92,7 +92,7 @@ export function Cases() {
           transition={{ duration: 0.55, ease: "easeOut" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="text-[28px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]">
+          <h2 className="text-[21px] leading-[1.3] tracking-[-0.015em] font-semibold text-white tablet:text-[36px] tablet:leading-[1.25] tablet:tracking-[-0.02em] desktop:text-[48px] desktop:leading-[1.2] desktop:tracking-[-0.025em]">
             {t("headlineTop")}
             <br />
             <span className="text-white/70">{t("headlineBottom")}</span>
@@ -187,44 +187,56 @@ function Lightbox({ state, onClose }: { state: LightboxState; onClose: () => voi
   );
 }
 
+function NicheSlot({ cycleKey, niche, i }: { cycleKey: number; niche: string; i: number }) {
+  return (
+    <div className="relative flex h-7 items-center justify-center overflow-hidden tablet:h-9 desktop:h-11">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={`${cycleKey}-${niche}`}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -14 }}
+          transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.04 }}
+          className="absolute text-[15px] font-semibold tracking-tight text-white/85 tablet:text-[18px] desktop:text-[22px]"
+        >
+          {niche}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function NicheRow({ sets }: { sets: string[][] }) {
+  const all = sets.flat();
+  const pairs: string[][] = [];
+  for (let i = 0; i < all.length; i += 2) pairs.push(all.slice(i, i + 2));
+
   const [setIdx, setSetIdx] = useState(0);
+  const [pairIdx, setPairIdx] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => {
       setSetIdx((n) => (n + 1) % sets.length);
+      setPairIdx((n) => (n + 1) % pairs.length);
     }, 2400);
     return () => clearInterval(id);
-  }, [sets.length]);
-
-  const niches = sets[setIdx];
+  }, [sets.length, pairs.length]);
 
   return (
-    <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-3 tablet:mt-12 tablet:grid-cols-4 tablet:gap-x-6 desktop:mt-14 desktop:gap-x-10">
-      {niches.map((niche, i) => (
-        <div
-          key={i}
-          className="relative flex h-7 items-center justify-center overflow-hidden tablet:h-9 desktop:h-11"
-        >
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={`${setIdx}-${niche}`}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -14 }}
-              transition={{
-                duration: 0.45,
-                ease: "easeOut",
-                delay: i * 0.04,
-              }}
-              className="absolute text-[15px] font-semibold tracking-tight text-white/85 tablet:text-[18px] desktop:text-[22px]"
-            >
-              {niche}
-            </motion.span>
-          </AnimatePresence>
-        </div>
-      ))}
-    </div>
+    <>
+      {/* Mobile: 1 Reihe, 2 Nischen die durch alle wechseln */}
+      <div className="mt-10 grid grid-cols-2 gap-x-4 tablet:hidden">
+        {pairs[pairIdx].map((niche, i) => (
+          <NicheSlot key={i} cycleKey={pairIdx} niche={niche} i={i} />
+        ))}
+      </div>
+      {/* Desktop: 4 Nischen in einer Reihe */}
+      <div className="mt-12 hidden grid-cols-4 gap-x-6 tablet:grid desktop:mt-14 desktop:gap-x-10">
+        {sets[setIdx].map((niche, i) => (
+          <NicheSlot key={i} cycleKey={setIdx} niche={niche} i={i} />
+        ))}
+      </div>
+    </>
   );
 }
 
