@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { BrandButton } from "@/components/ui/brand-button";
 import { HeroParticles } from "./hero-particles";
 
@@ -24,6 +24,8 @@ const fadeUp: Variants = {
 
 export function Hero() {
   const t = useTranslations("hero");
+  const locale = useLocale();
+  const showVideo = locale !== "en";
   const sectionRef = useRef<HTMLElement | null>(null);
   const spotRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
@@ -109,8 +111,8 @@ export function Hero() {
         variants={container}
         className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-5 tablet:grid-cols-10 tablet:gap-10 tablet:px-10 desktop:gap-20 desktop:px-20"
       >
-        {/* LEFT: copy (70%) */}
-        <div className="tablet:col-span-7">
+        {/* LEFT: copy (70%, full width when video is hidden) */}
+        <div className={showVideo ? "tablet:col-span-7" : "tablet:col-span-10"}>
           <motion.div
             variants={fadeUp}
             className="inline-flex items-center gap-2 rounded-full border border-[#7c3aed]/30 bg-[#3a0460]/40 px-4 py-1.5 text-[12px] font-medium text-[#d6c2ff] backdrop-blur"
@@ -157,10 +159,12 @@ export function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: video slot (30%) */}
-        <motion.div variants={fadeUp} className="tablet:col-span-3">
-          <VideoSlot />
-        </motion.div>
+        {/* RIGHT: video slot (30%) — hidden on the English page */}
+        {showVideo ? (
+          <motion.div variants={fadeUp} className="tablet:col-span-3">
+            <VideoSlot />
+          </motion.div>
+        ) : null}
       </motion.div>
     </section>
   );
