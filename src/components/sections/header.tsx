@@ -39,6 +39,7 @@ export function Header() {
   }, [menuOpen]);
 
   return (
+    <>
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
@@ -97,9 +98,10 @@ export function Header() {
           {menuOpen ? <CloseIcon /> : <BurgerIcon />}
         </button>
       </div>
-
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </header>
+
+    <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+    </>
   );
 }
 
@@ -129,7 +131,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 top-[82px] z-40 flex flex-col gap-2 border-t border-white/[0.06] bg-black/95 px-5 pt-6 pb-10 backdrop-blur-xl tablet:hidden"
+          className="fixed inset-0 top-[82px] z-40 flex flex-col gap-2 border-t border-white/[0.06] bg-black px-5 pt-6 pb-10 tablet:hidden"
         >
           <nav className="flex flex-col">
             {NAV_KEYS.map((item) => (
