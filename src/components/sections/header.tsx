@@ -98,7 +98,7 @@ function LocaleSwitcher() {
       type="button"
       onClick={toggle}
       aria-label={t("label")}
-      className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/[0.03] px-2.5 py-1.5 text-[12px] font-semibold tracking-wide text-white/80 transition-all hover:border-[#b554fa]/60 hover:bg-white/[0.06] hover:text-white"
+      className="inline-flex min-h-[40px] items-center gap-1 rounded-full border border-white/15 bg-white/[0.03] px-3 py-2 text-[13px] font-semibold tracking-wide text-white/80 transition-all hover:border-[#b554fa]/60 hover:bg-white/[0.06] hover:text-white"
     >
       <span className={locale === "de" ? "text-white" : "text-white/40"}>
         {t("de")}

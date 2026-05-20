@@ -89,6 +89,13 @@
         "umsatz": "140.809 €",
         "zeitraum": "11,71 € pro Kunde",
         "service": "Google Ads"
+      },
+      "lenvia": {
+        "branche": "Wellness",
+        "umsatz": "25.899 €",
+        "zeitraum": "in 6 Monaten",
+        "detail": "5.945 € investiert",
+        "service": "Google Ads"
       }
     },
     "niches": {

@@ -180,7 +180,7 @@ function TierCard({ tier }: { tier: Tier }) {
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
-            className="mt-5 inline-flex w-fit items-center gap-2 text-[13px] text-white/65 transition-colors hover:text-white"
+            className="mt-3 inline-flex min-h-[40px] w-fit items-center gap-2 text-[13px] text-white/65 transition-colors hover:text-white"
           >
             <span aria-hidden className="text-[15px]">👉</span>
             {open ? t("details.hide") : t("details.show")}

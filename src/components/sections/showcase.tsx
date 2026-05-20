@@ -212,7 +212,7 @@ export function Showcase() {
         </div>
 
         <div className="mx-auto mt-16 max-w-2xl rounded-3xl border border-white/10 bg-white/[0.02] px-6 py-10 text-center tablet:mt-20">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-[#3a0460]/40 px-3.5 py-1.5 text-[11px] font-semibold tracking-wider text-[#d6c2ff] uppercase ring-1 ring-[#7c3aed]/40">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-[#3a0460]/40 px-3.5 py-1.5 text-xs font-semibold tracking-wider text-[#d6c2ff] uppercase ring-1 ring-[#7c3aed]/40">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#a78bfa]" />
             {t("scarcity")}
           </div>
@@ -311,7 +311,7 @@ function SlotShell({
           {isActive ? (
             <div className="absolute inset-x-5 bottom-5 z-10 flex items-end justify-between gap-4 tablet:inset-x-7 tablet:bottom-6">
               <div>
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-white/80 uppercase ring-1 ring-white/15 backdrop-blur-sm tablet:text-[11px]">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold tracking-wider text-white/80 uppercase ring-1 ring-white/15 backdrop-blur-sm">
                   <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#a78bfa]" />
                   {branche}
                 </div>

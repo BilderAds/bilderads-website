@@ -14,7 +14,7 @@ type LightboxState = {
 type Plan = "Gold" | "Black Diamond";
 
 type CaseEntry = {
-  itemKey: "abfluss" | "gebaeude" | "schmuck" | "uhren" | "supplements";
+  itemKey: "abfluss" | "gebaeude" | "schmuck" | "uhren" | "supplements" | "lenvia";
   roas: string;
   plan: Plan;
   image: string;
@@ -54,6 +54,13 @@ const CASES: CaseEntry[] = [
     plan: "Black Diamond",
     image: "/testimonials/google-ads-supplement-shop-140k-umsatz.webp",
     siteUrl: "https://mindabolics.com/",
+  },
+  {
+    itemKey: "lenvia",
+    roas: "4,3x ROAS",
+    plan: "Black Diamond",
+    image: "/testimonials/google-ads-wellness-shop-26k-umsatz.webp",
+    siteUrl: "https://lenvia.de/",
   },
 ];
 
@@ -301,7 +308,7 @@ function SitePill({ url }: { url: string }) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group inline-flex items-center gap-1 text-[10px] font-medium text-white transition-colors hover:text-white/70"
+      className="group inline-flex items-center gap-1 py-1 text-xs font-medium text-white transition-colors hover:text-white/70"
     >
       {domain}
       <svg

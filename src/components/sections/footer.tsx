@@ -110,7 +110,7 @@ function FooterLink({
   return (
     <a
       href={href}
-      className="text-sm text-[#a1a1aa] transition-colors hover:text-white"
+      className="inline-flex min-h-[40px] items-center text-sm text-[#a1a1aa] transition-colors hover:text-white"
     >
       {children}
     </a>
@@ -127,7 +127,7 @@ function FooterLinkInternal({
   return (
     <Link
       href={href}
-      className="text-sm text-[#a1a1aa] transition-colors hover:text-white"
+      className="inline-flex min-h-[40px] items-center text-sm text-[#a1a1aa] transition-colors hover:text-white"
     >
       {children}
     </Link>

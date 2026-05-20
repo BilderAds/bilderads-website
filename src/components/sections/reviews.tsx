@@ -132,7 +132,7 @@ function ReviewCard({ review }: { review: Review }) {
           <span className="text-[13px] font-semibold text-white">
             {review.name}
           </span>
-          <span className="text-[11px] text-white/55">{review.plan}</span>
+          <span className="text-xs text-white/65">{review.plan}</span>
         </div>
       </div>
     </div>

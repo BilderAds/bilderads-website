@@ -217,14 +217,11 @@ function VideoSlot() {
           }}
         />
 
-        {/* placeholder caption top-left */}
-        <div className="absolute inset-x-5 top-5 flex items-center justify-between">
-          <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1 text-[11px] font-medium text-white/80 backdrop-blur">
+        {/* showreel label top-left */}
+        <div className="absolute inset-x-5 top-5 flex items-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur">
             <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
             {t("label")}
-          </span>
-          <span className="rounded-full bg-black/40 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-white/70 uppercase backdrop-blur">
-            {t("placeholder")}
           </span>
         </div>
 
