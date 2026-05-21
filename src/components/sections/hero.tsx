@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { motion, type Variants } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { BrandButton } from "@/components/ui/brand-button";
 import { HeroParticles } from "./hero-particles";
 
@@ -24,8 +24,6 @@ const fadeUp: Variants = {
 
 export function Hero() {
   const t = useTranslations("hero");
-  const locale = useLocale();
-  const showVideo = locale !== "en";
   const sectionRef = useRef<HTMLElement | null>(null);
   const spotRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
@@ -109,10 +107,10 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={container}
-        className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-5 tablet:grid-cols-10 tablet:gap-10 tablet:px-10 desktop:gap-20 desktop:px-20"
+        className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-5 tablet:gap-10 tablet:px-10 desktop:gap-20 desktop:px-20"
       >
-        {/* LEFT: copy (70%, full width when video is hidden) */}
-        <div className={showVideo ? "tablet:col-span-7" : "tablet:col-span-10"}>
+        {/* Copy — full width (hero video removed) */}
+        <div>
           <motion.div
             variants={fadeUp}
             className="inline-flex items-center gap-2 rounded-full border border-[#7c3aed]/30 bg-[#3a0460]/40 px-4 py-1.5 text-[12px] font-medium text-[#d6c2ff] backdrop-blur"
@@ -158,13 +156,6 @@ export function Hero() {
             </ol>
           </div>
         </div>
-
-        {/* RIGHT: video slot (30%) — hidden on the English page */}
-        {showVideo ? (
-          <motion.div variants={fadeUp} className="tablet:col-span-3">
-            <VideoSlot />
-          </motion.div>
-        ) : null}
       </motion.div>
     </section>
   );
@@ -186,114 +177,5 @@ function Spark() {
         fill="#c4b5fd"
       />
     </svg>
-  );
-}
-
-/* ─── Video slot ──────────────────────────────────────────────────────── */
-
-function VideoSlot() {
-  const t = useTranslations("hero.video");
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLVideoElement>(null);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.96, y: 16 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-      className="relative mx-auto w-full max-w-[560px]"
-    >
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Showreel ansehen"
-        className="group relative block aspect-video w-full overflow-hidden rounded-[20px] ring-1 ring-white/10 shadow-[0_30px_80px_-30px_rgba(58,4,96,0.8)] transition-all duration-300 hover:shadow-[0_36px_90px_-30px_rgba(124,58,237,0.7)]"
-      >
-        {/* Placeholder gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#3a0460] via-[#1a0030] to-[#0a001a]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(255,255,255,0.18),transparent_55%)]" />
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-30 mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-        />
-
-        {/* showreel label top-left */}
-        <div className="absolute inset-x-5 top-5 flex items-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur">
-            <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
-            {t("label")}
-          </span>
-        </div>
-
-        {/* Play button center */}
-        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <span
-            aria-hidden
-            className="absolute inset-0 -m-4 rounded-full bg-white/20 blur-md motion-safe:animate-pulse"
-          />
-          <span className="relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-white text-[#3a0460] shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] transition-transform group-hover:scale-105 md:h-16 md:w-16 lg:h-20 lg:w-20">
-            <svg
-              viewBox="0 0 24 24"
-              className="h-5 w-5 translate-x-[2px] md:h-6 md:w-6 lg:h-8 lg:w-8"
-              fill="currentColor"
-              aria-hidden
-            >
-              <path d="M7 4.5v15l13-7.5L7 4.5Z" />
-            </svg>
-          </span>
-        </span>
-
-        {/* caption bottom */}
-        <div className="absolute inset-x-5 bottom-5">
-          <div className="text-[15px] font-semibold leading-tight text-white">
-            {t("captionTitle")}
-          </div>
-          <div className="mt-1 text-[12px] text-white/65">
-            {t("captionSub")}
-          </div>
-        </div>
-      </button>
-
-      {open ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur p-4"
-          onClick={() => {
-            if (ref.current) ref.current.pause();
-            setOpen(false);
-          }}
-        >
-          <div
-            className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-black ring-1 ring-white/10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              aria-label="Schließen"
-              onClick={() => {
-                if (ref.current) ref.current.pause();
-                setOpen(false);
-              }}
-              className="absolute top-3 right-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white ring-1 ring-white/15 backdrop-blur hover:bg-black/80"
-            >
-              ×
-            </button>
-            <div className="aspect-video w-full">
-              <video
-                ref={ref}
-                controls
-                playsInline
-                className="h-full w-full bg-black object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      ) : null}
-    </motion.div>
   );
 }
