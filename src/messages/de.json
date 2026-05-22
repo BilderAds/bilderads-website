@@ -193,11 +193,6 @@
         "plan": "Gold"
       },
       {
-        "text": "Wir haben vorher fast ausschließlich mit Videos gearbeitet. Durch die neuen Bilder haben wir unseren Umsatz im ersten Monat um 53.000 € gesteigert.",
-        "name": "Tobias",
-        "plan": "Black Diamond"
-      },
-      {
         "text": "Was uns überzeugt hat war die Struktur und das klare System. Alles ist nachvollziehbar und top geplant.",
         "name": "Leonard",
         "plan": "Black Diamond"
@@ -205,11 +200,6 @@
       {
         "text": "Wir dachten lange, dass uns nur ein neues Produkt rettet. Lag aber am Marketing. Nach drei Monaten waren wir voll ausgebucht.",
         "name": "Daniel",
-        "plan": "Gold"
-      },
-      {
-        "text": "Ehrlich gesagt war ich skeptisch ob man mit Bildern heute noch was rausholen kann. Meine Skepsis ist schnell verflogen.",
-        "name": "Keanu",
         "plan": "Gold"
       },
       {
@@ -334,44 +324,52 @@
   },
   "faq": {
     "headlineTop": "Fragen und Antworten",
-    "headlineBottom": "rund um unsere BilderAds",
-    "cta": "Jetzt mehr Kunden bekommen",
+    "headlineBottom": "die wir am häufigsten hören",
+    "cta": "Schau ob's für dich passt",
     "items": [
       {
         "q": "Funktioniert das auch für mein Business?",
-        "a": "Wenn du lokaler Dienstleister bist (Maler, Elektriker, Sanitär, Reinigung, Glaser, Entrümpelung, Schlüsseldienst, Dachdecker) – ja. Wir testen das im Erstgespräch in 5 Minuten."
+        "a": "Wenn du lokaler Dienstleister bist (Maler, Elektriker, Sanitär, Reinigung, Glaser, Entrümpelung, Schlüsseldienst, Dachdecker), dann ja. Wir testen das im Erstgespräch in 5 Minuten."
       },
       {
-        "q": "Für wen ist BilderAds geeignet?",
-        "a": "Inhaber lokaler Dienstleister, die mehr zahlende Kunden wollen, ohne selber Werbung machen zu müssen. Du musst die Aufträge nur abarbeiten können."
-      },
-      {
-        "q": "Macht ihr nur Creatives oder auch Strategie?",
-        "a": "Beides. Werbeanzeigen, Website, Google Business Profil, Zielgruppen, Budget, Reporting. Komplettes Performance-Setup, nicht nur hübsche Bilder."
+        "q": "Wie schnell sehe ich erste Anfragen?",
+        "a": "Meistens in den ersten Wochen. Sobald die Anzeigen live sind, landen Leute bei dir, die gerade nach deiner Leistung suchen. Wie schnell genau hängt von Stadt und Branche ab, das sagen wir dir ehrlich im Erstgespräch."
       },
       {
         "q": "Schaltet ihr auch die Ads (Media Buying)?",
         "a": "Ja. Google Ads, optional Facebook und Instagram (Black Diamond). Du musst nichts selber klicken."
       },
       {
-        "q": "Wie läuft die Zusammenarbeit ab?",
-        "a": "1. Erstgespräch · 2. Onboarding-Call (60 Min) · 3. Wir bauen Ads + Website · 4. Anzeigen gehen live · 5. Wöchentlicher Performance-Bericht. Du musst nur dabei sein."
+        "q": "Macht ihr nur Werbung oder das ganze System?",
+        "a": "Beides. Google Ads, Website, Google Business Profil, Zielgruppen, Budget, Reporting. Das komplette System, damit Suchende bei dir landen. Nicht nur Anzeigen anschalten."
       },
       {
-        "q": "Muss ich einen Call machen?",
-        "a": "Ja, einen kurzen. 30 Minuten. Wir gucken ob wir zusammen passen. Kein Verkaufsdruck, keine Folie."
+        "q": "Wie läuft die Zusammenarbeit ab?",
+        "a": "1. Erstgespräch (kurz, geht auch schriftlich) · 2. Kurzes Onboarding: du hinterlegst nur deine Kreditkarte fürs Google-Budget, fertig · 3. Wir bauen Ads + Website · 4. Anzeigen gehen live · 5. Wöchentlicher Performance-Bericht. Du musst fast nichts tun."
       },
       {
         "q": "Was kostet BilderAds?",
         "a": "Gold 3.000 € / Monat, Black Diamond 5.000 € / Monat. Dazu dein Google-Ads-Budget (zahlst direkt an Google). Mindestlaufzeit 3 Monate, danach monatlich kündbar."
       },
       {
+        "q": "Muss ich einen Call machen?",
+        "a": "Nicht unbedingt. Wenn du keine Lust auf einen Call hast, klären wir alles auch schriftlich, ohne Zeitverzögerung. Kein Verkaufsdruck."
+      },
+      {
         "q": "Arbeitet ihr mit jedem?",
         "a": "Nein. Aktuell nehmen wir nur lokale Dienstleister, und auch nur wenn wir glauben, dass wir Ergebnisse liefern können. Nicht jede Branche, nicht jede Stadt."
       },
       {
+        "q": "Für wen ist BilderAds geeignet?",
+        "a": "Inhaber lokaler Dienstleister, die mehr Aufträge wollen, ohne selber Werbung machen zu müssen. Du musst die Aufträge nur abarbeiten können."
+      },
+      {
+        "q": "Was, wenn es nicht funktioniert?",
+        "a": "Dann reden wir Klartext. Wir nehmen dich nur, wenn wir glauben dass wir liefern. Läuft was nicht, ändern wir's oder sagen's dir ehrlich."
+      },
+      {
         "q": "Was ist der Sinn des Lebens?",
-        "a": "Mehr zahlende Kunden für dein Business. Probier's mit dem Button unten."
+        "a": "So viele Kunden zu haben, dass du dir alle deine Träume erfüllen kannst und deine Kunden gleichzeitig glücklich sind, ist doch klar!"
       }
     ]
   },

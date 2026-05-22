@@ -16,8 +16,9 @@ type Review = {
 export function Reviews() {
   const t = useTranslations("reviews");
   const allReviews = t.raw("items") as Review[];
-  const ROW_A = allReviews.slice(0, 4);
-  const ROW_B = allReviews.slice(4, 8);
+  const half = Math.ceil(allReviews.length / 2);
+  const ROW_A = allReviews.slice(0, half);
+  const ROW_B = allReviews.slice(half);
 
   return (
     <section
@@ -132,7 +133,6 @@ function ReviewCard({ review }: { review: Review }) {
           <span className="text-[13px] font-semibold text-white">
             {review.name}
           </span>
-          <span className="text-xs text-white/65">{review.plan}</span>
         </div>
       </div>
     </div>

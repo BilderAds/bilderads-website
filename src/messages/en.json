@@ -191,11 +191,6 @@
         "plan": "Gold"
       },
       {
-        "text": "Before we worked almost only with videos. The new images grew our revenue by €53,000 in the first month.",
-        "name": "Tobias",
-        "plan": "Black Diamond"
-      },
-      {
         "text": "What sold us was the structure and the clear system. Everything is easy to follow and well planned.",
         "name": "Leonard",
         "plan": "Black Diamond"
@@ -203,11 +198,6 @@
       {
         "text": "We thought a new product would save us. But it was the marketing. After three months we were fully booked.",
         "name": "Daniel",
-        "plan": "Gold"
-      },
-      {
-        "text": "Honestly I was unsure if images still work today. But my doubt was gone fast.",
-        "name": "Keanu",
         "plan": "Gold"
       },
       {
@@ -332,44 +322,52 @@
   },
   "faq": {
     "headlineTop": "Questions and answers",
-    "headlineBottom": "about BilderAds",
-    "cta": "Get more customers now",
+    "headlineBottom": "the ones we hear most",
+    "cta": "See if it fits you",
     "items": [
       {
         "q": "Does this work for my business too?",
-        "a": "If you are a local service business (painter, electrician, plumber, cleaner, glazier, junk removal, locksmith, roofer) yes. We check this in the first call in 5 minutes."
+        "a": "If you are a local service business (painter, electrician, plumber, cleaner, glazier, junk removal, locksmith, roofer), then yes. We check this in the first call in 5 minutes."
       },
       {
-        "q": "Who is BilderAds for?",
-        "a": "Owners of local service businesses who want more paying customers without doing the marketing themselves. You just need to handle the jobs."
-      },
-      {
-        "q": "Do you only make creatives or also strategy?",
-        "a": "Both. Ads, website, Google Business Profile, audiences, budget, reporting. Full performance setup, not only pretty images."
+        "q": "How fast will I see first leads?",
+        "a": "Most of the time in the first weeks. Once the ads are live, people who are searching for your service right now land with you. How fast exactly depends on your city and trade, we tell you honestly in the first call."
       },
       {
         "q": "Do you also run the ads (media buying)?",
         "a": "Yes. Google Ads, optional Facebook and Instagram (Black Diamond). You do not need to click anything yourself."
       },
       {
-        "q": "How does the work happen?",
-        "a": "1. First call · 2. Onboarding call (60 min) · 3. We build ads and website · 4. Ads go live · 5. Weekly performance report. You just need to show up."
+        "q": "Do you only run ads or the whole system?",
+        "a": "Both. Google Ads, website, Google Business Profile, audiences, budget, reporting. The full system, so people who search land with you. Not just turning on ads."
       },
       {
-        "q": "Do I have to do a call?",
-        "a": "Yes, a short one. 30 minutes. We see if we fit. No sales pressure, no slides."
+        "q": "How does the work happen?",
+        "a": "1. First call (short, also works in writing) · 2. Quick onboarding: you just add your credit card for the Google budget, done · 3. We build ads and website · 4. Ads go live · 5. Weekly performance report. You barely have to do anything."
       },
       {
         "q": "What does BilderAds cost?",
         "a": "Gold €3,000 per month, Black Diamond €5,000 per month. Plus your Google Ads budget (paid directly to Google). 3 month minimum, then monthly."
       },
       {
+        "q": "Do I have to do a call?",
+        "a": "Not necessarily. If you do not feel like a call, we can sort everything in writing, with no delay. No sales pressure."
+      },
+      {
         "q": "Do you work with everyone?",
         "a": "No. Right now we only take local service businesses, and only if we believe we can deliver results. Not every niche, not every city."
       },
       {
+        "q": "Who is BilderAds for?",
+        "a": "Owners of local service businesses who want more jobs without doing the marketing themselves. You just need to handle the jobs."
+      },
+      {
+        "q": "What if it does not work?",
+        "a": "Then we talk straight. We only take you on if we believe we can deliver. If something is not working, we change it or tell you honestly."
+      },
+      {
         "q": "What is the meaning of life?",
-        "a": "More paying customers for your business. Try the button below."
+        "a": "Having so many customers that you can make all your dreams come true while your customers are happy too, obviously!"
       }
     ]
   },
