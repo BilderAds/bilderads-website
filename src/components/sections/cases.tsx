@@ -307,7 +307,7 @@ function CaseCard({ entry, onImageClick }: { entry: CaseEntry; onImageClick: () 
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-white/15 bg-transparent px-4 py-2 text-[13px] font-medium text-white/85">
+    <span className="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border border-white/15 bg-transparent px-4 py-2 text-[13px] font-medium text-white/85">
       {children}
     </span>
   );
