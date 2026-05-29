@@ -63,8 +63,6 @@ export function FooterCTA() {
           >
             info@bilderads.de
           </a>
-          <span aria-hidden className="text-[#71717a]">·</span>
-          <span>{t("whatsapp")}</span>
         </motion.p>
 
         <motion.p

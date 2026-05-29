@@ -51,7 +51,7 @@ export function Footer() {
             <FooterLink href="mailto:info@bilderads.de">
               info@bilderads.de
             </FooterLink>
-            <div className="text-sm text-[#a1a1aa]">{t("phone")}</div>
+            <FooterLink href="tel:+4915678304761">{t("phone")}</FooterLink>
             <div className="mt-2 flex items-center gap-3">
               <a
                 href="https://www.instagram.com/bilderads/"
