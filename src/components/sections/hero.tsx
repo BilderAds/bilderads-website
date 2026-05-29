@@ -1,26 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import { motion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { BrandButton } from "@/components/ui/brand-button";
 import { HeroParticles } from "./hero-particles";
-
-const container: Variants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.2, delayChildren: 0.25 },
-  },
-};
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 22 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
-  },
-};
 
 export function Hero() {
   const t = useTranslations("hero");
@@ -103,60 +86,67 @@ export function Hero() {
         </div>
       </div>
 
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={container}
-        className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-5 tablet:gap-10 tablet:px-10 desktop:gap-20 desktop:px-20"
-      >
+      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 px-5 tablet:gap-10 tablet:px-10 desktop:gap-20 desktop:px-20">
         {/* Copy — full width (hero video removed) */}
         <div>
-          <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-[#7c3aed]/30 bg-[#3a0460]/40 px-4 py-1.5 text-[12px] font-medium text-[#d6c2ff] backdrop-blur"
+          <div
+            className="bm-fade-up-hero inline-flex items-center gap-2 rounded-full border border-[#7c3aed]/30 bg-[#3a0460]/40 px-4 py-1.5 text-[12px] font-medium text-[#d6c2ff] backdrop-blur"
+            style={{ "--bm-delay": "0ms" } as React.CSSProperties}
           >
             <Spark />
             {t("pill")}
-          </motion.div>
+          </div>
 
-          <motion.h1
-            variants={fadeUp}
-            className="mt-6 text-[28px] leading-[1.18] tracking-[-0.015em] font-bold whitespace-pre-line text-white tablet:text-[42px] tablet:leading-[1.12] tablet:tracking-[-0.02em] desktop:text-[56px] desktop:leading-[1.08] desktop:tracking-[-0.025em]"
+          <h1
+            className="bm-fade-up-hero mt-6 text-[28px] leading-[1.18] tracking-[-0.015em] font-bold whitespace-pre-line text-white tablet:text-[42px] tablet:leading-[1.12] tablet:tracking-[-0.02em] desktop:text-[56px] desktop:leading-[1.08] desktop:tracking-[-0.025em]"
+            style={{ "--bm-delay": "80ms" } as React.CSSProperties}
           >
             {t("headline")}
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={fadeUp}
-            className="mt-6 max-w-xl whitespace-normal text-[14px] leading-[1.6] text-white/65 tablet:whitespace-pre-line tablet:text-[17px] tablet:leading-[1.7] desktop:text-[18px]"
+          <p
+            className="bm-fade-up-hero mt-6 max-w-xl whitespace-normal text-[14px] leading-[1.6] text-white/65 tablet:whitespace-pre-line tablet:text-[17px] tablet:leading-[1.7] desktop:text-[18px]"
+            style={{ "--bm-delay": "200ms" } as React.CSSProperties}
           >
             {t("subline")}
-          </motion.p>
+          </p>
 
           <div className="mt-8 flex flex-col items-start gap-6">
-            <motion.div variants={fadeUp}>
+            <div
+              className="bm-fade-up-hero"
+              style={{ "--bm-delay": "350ms" } as React.CSSProperties}
+            >
               <BrandButton href="/funnel-start" size="lg">
                 {t("cta")}
               </BrandButton>
-            </motion.div>
+            </div>
 
             <ol className="flex flex-col items-start gap-3 text-[14px] text-white/70 tablet:flex-row tablet:flex-wrap tablet:items-center tablet:gap-x-7 tablet:gap-y-3">
-              <motion.li variants={fadeUp} className="inline-flex items-center gap-2.5">
+              <li
+                className="bm-fade-up-hero inline-flex items-center gap-2.5"
+                style={{ "--bm-delay": "500ms" } as React.CSSProperties}
+              >
                 <StepDot n={1} />
                 <span className="font-medium">{t("steps.1")}</span>
-              </motion.li>
-              <motion.li variants={fadeUp} className="inline-flex items-center gap-2.5">
+              </li>
+              <li
+                className="bm-fade-up-hero inline-flex items-center gap-2.5"
+                style={{ "--bm-delay": "620ms" } as React.CSSProperties}
+              >
                 <StepDot n={2} />
                 <span className="font-medium">{t("steps.2")}</span>
-              </motion.li>
-              <motion.li variants={fadeUp} className="inline-flex items-center gap-2.5">
+              </li>
+              <li
+                className="bm-fade-up-hero inline-flex items-center gap-2.5"
+                style={{ "--bm-delay": "740ms" } as React.CSSProperties}
+              >
                 <StepDot n={3} />
                 <span className="font-medium">{t("steps.3")}</span>
-              </motion.li>
+              </li>
             </ol>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
