@@ -21,11 +21,27 @@ const NAV_KEYS = [
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useTranslations("header");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      // Top of page: always show
+      if (y < 80) {
+        setHidden(false);
+      } else if (y > lastY + 4) {
+        // scrolling down — hide
+        setHidden(true);
+      } else if (y < lastY - 4) {
+        // scrolling up — show
+        setHidden(false);
+      }
+      lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -42,10 +58,11 @@ export function Header() {
     <>
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color,backdrop-filter] duration-300 ease-out",
         scrolled
           ? "border-b border-white/[0.06] bg-black/70 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent",
+        hidden && !menuOpen ? "-translate-y-full" : "translate-y-0",
       )}
     >
       <div
