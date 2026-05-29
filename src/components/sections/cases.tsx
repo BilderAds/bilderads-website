@@ -208,27 +208,39 @@ function NicheSlot({ cycleKey, niche, i }: { cycleKey: number; niche: string; i:
 
 function NicheRow({ sets }: { sets: string[][] }) {
   const all = sets.flat();
-  const pairs: string[][] = [];
-  for (let i = 0; i < all.length; i += 2) pairs.push(all.slice(i, i + 2));
+  const doubled = [...all, ...all];
 
   const [setIdx, setSetIdx] = useState(0);
-  const [pairIdx, setPairIdx] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => {
       setSetIdx((n) => (n + 1) % sets.length);
-      setPairIdx((n) => (n + 1) % pairs.length);
     }, 2400);
     return () => clearInterval(id);
-  }, [sets.length, pairs.length]);
+  }, [sets.length]);
 
   return (
     <>
-      {/* Mobile: 1 Reihe, 2 Nischen die durch alle wechseln */}
-      <div className="mt-10 grid grid-cols-2 gap-x-4 tablet:hidden">
-        {pairs[pairIdx].map((niche, i) => (
-          <NicheSlot key={i} cycleKey={pairIdx} niche={niche} i={i} />
-        ))}
+      {/* Mobile: kontinuierliche Marquee durch alle Nischen */}
+      <div
+        className="relative mt-10 w-full overflow-hidden tablet:hidden"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%)",
+        }}
+      >
+        <div className="marquee-track marquee-anim-left">
+          {doubled.map((niche, i) => (
+            <span
+              key={`${niche}-${i}`}
+              className="inline-flex shrink-0 items-center px-4 text-[15px] font-semibold tracking-tight text-white/85"
+            >
+              {niche}
+            </span>
+          ))}
+        </div>
       </div>
       {/* Desktop: 4 Nischen in einer Reihe */}
       <div className="mt-12 hidden grid-cols-4 gap-x-6 tablet:grid desktop:mt-14 desktop:gap-x-10">
