@@ -51,6 +51,11 @@ const GAP = 16;
 const ACTIVE_RATIO = 0.58;
 const SIDE_RATIO = 0.13;
 const EDGE_RATIO = 0.045;
+// Mobile (<810px) zeigt nur 3 Slots mit groesserer aktiver Karte,
+// damit man die Website ueberhaupt sieht.
+const MOBILE_GAP = 10;
+const MOBILE_ACTIVE_RATIO = 0.84;
+const MOBILE_SIDE_RATIO = 0.07;
 const CARD_HEIGHT_RATIO = 0.35;
 const CARD_HEIGHT_MIN = 220;
 const CARD_HEIGHT_MAX = 430;
@@ -75,6 +80,7 @@ export function Showcase() {
   const frameRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(0);
   const [stageWidth, setStageWidth] = useState(1100);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const node = frameRef.current;
@@ -87,17 +93,33 @@ export function Showcase() {
     return () => ro.disconnect();
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 809px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   const cardHeight = clamp(
     stageWidth * CARD_HEIGHT_RATIO,
     CARD_HEIGHT_MIN,
     CARD_HEIGHT_MAX,
   );
 
-  const visibleCount = Math.min(count, 5);
+  const visibleCount = isMobile ? Math.min(count, 3) : Math.min(count, 5);
   const centerSlot = Math.floor((visibleCount - 1) / 2);
+  const gap = isMobile ? MOBILE_GAP : GAP;
 
   const slotWidths = useMemo(() => {
     const w = stageWidth;
+    if (isMobile) {
+      return [
+        w * MOBILE_SIDE_RATIO,
+        w * MOBILE_ACTIVE_RATIO,
+        w * MOBILE_SIDE_RATIO,
+      ];
+    }
     if (visibleCount === 5) {
       return [
         w * EDGE_RATIO,
@@ -118,21 +140,21 @@ export function Showcase() {
       return [w * SIDE_RATIO, w * ACTIVE_RATIO, w * SIDE_RATIO];
     if (visibleCount === 2) return [w * SIDE_RATIO, w * ACTIVE_RATIO];
     return [w];
-  }, [stageWidth, visibleCount]);
+  }, [stageWidth, visibleCount, isMobile]);
 
   const totalWidth =
     slotWidths.reduce((s, x) => s + x, 0) +
-    GAP * Math.max(0, slotWidths.length - 1);
+    gap * Math.max(0, slotWidths.length - 1);
   const startX = (stageWidth - totalWidth) / 2;
 
   const slotPositions = useMemo(() => {
     let acc = startX;
     return slotWidths.map((width) => {
       const left = acc;
-      acc += width + GAP;
+      acc += width + gap;
       return { left, width };
     });
-  }, [slotWidths, startX]);
+  }, [slotWidths, startX, gap]);
 
   const slotSlideIndex = (slotIdx: number) =>
     wrap(active + (slotIdx - centerSlot), count);
