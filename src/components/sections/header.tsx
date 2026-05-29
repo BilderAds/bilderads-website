@@ -158,6 +158,8 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   );
 }
 
+const SECTION_IDS = ["ergebnisse", "vorteile", "showcase", "stimmen", "preise", "faq", "kontakt"] as const;
+
 function LocaleSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
@@ -166,7 +168,27 @@ function LocaleSwitcher() {
 
   const toggle = () => {
     const next: Locale = locale === "de" ? "en" : "de";
-    router.replace(pathname, { locale: next });
+    let hash = typeof window !== "undefined" ? window.location.hash : "";
+    if (!hash && typeof window !== "undefined") {
+      const cutoff = window.scrollY + 120;
+      let nearest = "";
+      for (const id of SECTION_IDS) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top + window.scrollY <= cutoff) {
+          nearest = id;
+        }
+      }
+      if (nearest) hash = "#" + nearest;
+    }
+    router.replace((pathname + hash) as never, { locale: next });
+    if (hash) {
+      const id = hash.slice(1);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          document.getElementById(id)?.scrollIntoView({ block: "start" });
+        }),
+      );
+    }
   };
 
   return (
