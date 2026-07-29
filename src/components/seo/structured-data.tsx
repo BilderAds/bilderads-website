@@ -27,7 +27,7 @@ const FAQS = [
   },
   {
     q: "Was kostet BilderAds?",
-    a: "Gold 3.000 € pro Monat, Black Diamond 5.000 € pro Monat. Dazu dein Google-Ads-Budget (zahlst direkt an Google). Mindestlaufzeit 3 Monate, danach monatlich kündbar.",
+    a: "Gold 7.000 € pro Monat, Black Diamond 10.000 € pro Monat. Dazu dein Google-Ads-Budget (zahlst direkt an Google). Mindestlaufzeit 3 Monate, danach monatlich kündbar.",
   },
   {
     q: "Arbeitet ihr mit jedem?",

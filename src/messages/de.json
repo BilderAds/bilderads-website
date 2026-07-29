@@ -233,7 +233,7 @@
       "name": "Gold",
       "scarcity": "Nur noch 3 Plätze frei",
       "pitch": "Jeden Monat mehr Kunden bekommen, ohne einen Finger zu rühren.",
-      "price": "3.000 €",
+      "price": "7.000 €",
       "unit": "/ Monat",
       "features": [
         {
@@ -261,7 +261,7 @@
     "blackDiamond": {
       "name": "Black Diamond",
       "pitch": "Für Dienstleister die mehr Kunden wollen, ohne Risiko einzugehen.",
-      "price": "5.000 €",
+      "price": "10.000 €",
       "unit": "/ Monat",
       "features": [
         {
@@ -351,7 +351,7 @@
       },
       {
         "q": "Was kostet BilderAds?",
-        "a": "Gold 3.000 € / Monat, Black Diamond 5.000 € / Monat. Dazu dein Google-Ads-Budget (zahlst direkt an Google). Mindestlaufzeit 3 Monate, danach monatlich kündbar."
+        "a": "Gold 7.000 € / Monat, Black Diamond 10.000 € / Monat. Dazu dein Google-Ads-Budget (zahlst direkt an Google). Mindestlaufzeit 3 Monate, danach monatlich kündbar."
       },
       {
         "q": "Muss ich einen Call machen?",
