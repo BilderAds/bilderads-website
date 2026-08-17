@@ -95,16 +95,14 @@ function ImpressumDE() {
         Telefon: +49 2226 89 229 13
       </p>
 
-      <h2>EU-Streitschlichtung</h2>
-      <p>
-        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung
-        (OS) bereit:{" "}
-        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
-          https://ec.europa.eu/consumers/odr/
-        </a>
-        . Unsere E-Mail-Adresse finden Sie oben im Impressum.
-      </p>
-
+      {/*
+        Kein Abschnitt "EU-Streitschlichtung" mehr, und der Link auf
+        ec.europa.eu/consumers/odr darf nicht zurueck. Die Plattform wurde am
+        20.07.2025 abgeschaltet, die Verordnung (EU) Nr. 524/2013 ist
+        aufgehoben, der Link antwortet mit 404 (am 17.08.2026 selbst geprueft).
+        Ein toter Pflichtlink im Impressum ist abmahnfaehig. Gilt genauso im
+        englischen Teil weiter unten.
+      */}
       <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
       <p>
         Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor
@@ -227,16 +225,9 @@ function ImprintEN() {
         Phone: +49 2226 89 229 13
       </p>
 
-      <h2>EU dispute resolution</h2>
-      <p>
-        The European Commission provides a platform for online dispute resolution
-        (OS):{" "}
-        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
-          https://ec.europa.eu/consumers/odr/
-        </a>
-        . Our email address is listed above.
-      </p>
-
+      {/* Siehe Kommentar im deutschen Teil: die OS-Plattform der EU ist seit
+          dem 20.07.2025 abgeschaltet, der Hinweis gehoert nicht mehr ins
+          Impressum. */}
       <h2>Consumer dispute resolution</h2>
       <p>
         We are not willing or obliged to take part in dispute resolution proceedings
